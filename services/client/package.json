@@ -4,29 +4,31 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "classnames": "^2.2.6",
     "next": "^9.5.4",
-    "postcss-css-variables": "^0.17.0",
-    "postcss-loader": "^4.0.3",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "sass": "^1.27.0"
+    "react-ionicons": "^3.1.4"
   },
   "devDependencies": {
     "eslint": "^7.10.0",
     "eslint-plugin-react": "^7.21.3",
     "onchange": "^7.0.2",
+    "postcss-css-variables": "^0.17.0",
+    "postcss-custom-properties": "^10.0.0",
+    "postcss-import": "^12.0.1",
+    "postcss-loader": "^4.0.3",
     "postcss-preset-env": "^6.7.0",
     "prettier": "^2.1.2",
+    "stylelint-config-recommended": "^3.0.0",
     "tailwindcss": "^1.8.12"
   },
   "scripts": {
     "start": "next start",
     "build": "next build",
     "dev": "next",
-    "format": "prettier --write **/*.js",
-    "prettier:watch": "onchange \"**/*.js\" -- prettier --write \"{{changed}}\"",
+    "format": "prettier --write **/*.js --ignore-path \"./.gitignore\"",
+    "prettier:watch": "onchange \"{pages,config,layouts,components,config}/**/*.js\" -- prettier --write \"{{changed}}\"",
     "lint": "eslint --fix"
   },
   "author": "",

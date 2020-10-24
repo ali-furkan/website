@@ -1,0 +1,15 @@
+.header {
+    backdrop-filter: blur(2px);
+    @apply w-full sticky top-0
+}
+
+.main {
+    @apply w-full h-full
+}
+
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+  .navbar {
+    -webkit-backdrop-filter: blur(2px);
+    backdrop-filter: blur(2px);
+  }
+}

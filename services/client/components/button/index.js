@@ -7,20 +7,32 @@ export const Button = ({
     textColor,
     text,
     size,
+    CustomComponent,
     ...props
-}) => (
-    <button
-        className={[
+}) => {
+    const componentProps = {
+        className: [
             style.button,
             `bg-${bgColor}`,
             `text-${textColor}`,
             `text-${size}`,
-        ].join(" ")}
-        {...props}
-    >
-        {text ?? children}
-    </button>
-);
+        ].join(" "),
+        ...props
+    }
+    if(CustomComponent)
+        return (
+            <CustomComponent {...componentProps}>
+                {text??children}
+            </CustomComponent>
+        )
+    return (
+        <button
+            {...componentProps}
+        >
+            {text ?? children}
+        </button>
+    ) 
+}
 
 Button.defaultProps = {
     bgColor: "secondary-400",
@@ -34,4 +46,5 @@ Button.propTypes = {
     textColor: PropTypes.string,
     size: PropTypes.string,
     text: PropTypes.string,
+    CustomComponent: PropTypes.func
 };

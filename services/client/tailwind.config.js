@@ -1,11 +1,11 @@
-const { colors }  = require("./config/configuration")
+const { colors } = require("./config/configuration");
 
-const colorWhiteList = Object.entries(colors).map(([key,val])=>[
-    ...Object.keys(val).map(c=>`bg-${key}-${c}`),
-    ...Object.keys(val).map(c=>`text-${key}-${c}`)
-]).reduce(
-    (a,b)=>[...a,...b]
-)
+const colorWhiteList = Object.entries(colors)
+    .map(([key, val]) => [
+        ...Object.keys(val).map((c) => `bg-${key}-${c}`),
+        ...Object.keys(val).map((c) => `text-${key}-${c}`),
+    ])
+    .reduce((a, b) => [...a, ...b]);
 
 module.exports = {
     future: {
@@ -16,15 +16,11 @@ module.exports = {
         applyComplexClasses: true,
     },
     purge: {
-        content: ["./pages/**/*.js","./layouts/**/*.js"],
+        content: ["./pages/**/*.js", "./layouts/**/*.js"],
         options: {
-            tailwind:true,
-            whitelist: [
-                ...colorWhiteList,
-                "bg-white",
-                "text-white"
-            ]
-        }
+            tailwind: true,
+            whitelist: [...colorWhiteList, "bg-white", "text-white"],
+        },
     },
     theme: {
         fontFamily: {
@@ -38,13 +34,16 @@ module.exports = {
                 "101": 101,
             },
             screens: {
-                light: { raw: "(prefers-color-scheme: dark)" },
+                light: { raw: "(prefers-color-scheme: light)" },
                 dark: { raw: "(prefers-color-scheme: dark)" },
+            },
+            boxShadow: {
+                lg: `0 10px 15px -3px ${colors.secondary[500]}40, 0 4px 6px -2px ${colors.secondary[500]}40`
             },
             borderRadius: {
                 default: "12px",
             },
-            colors
+            colors,
         },
     },
     plugins: [

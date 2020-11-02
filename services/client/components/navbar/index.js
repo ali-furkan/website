@@ -1,16 +1,20 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import { Button } from "@components/button";
 import Config from "@config/configuration";
 import style from "./style.module.css";
+import Image from "next/image"
+import { useTheme } from "@lib/theme";
 
 const MenuIcon = dynamic(() => import("react-ionicons/lib/MdMenu"));
 const CloseIcon = dynamic(() => import("react-ionicons/lib/MdClose"));
 
 export const Navbar = ({ links }) => {
     const [isOpen, setOpen] = useState(false);
+    const [theme] = useTheme()
+    const isDark = theme === "dark"
 
     const NavLinks = () => (
         <ul className={style.links}>
@@ -29,10 +33,10 @@ export const Navbar = ({ links }) => {
             <nav className={style.navbar} role="navigation">
                 <Link href="/">
                     <a className={style.logos}>
-                        <img
-                            width="64px"
-                            height="64px"
-                            src="/assets/logo-white.png"
+                        <Image
+                            width={64}
+                            height={64}
+                            src={`/assets/logo-${isDark?"white":"black"}.png`}
                             alt="logo"
                         />
                         <div className={style["logo-text"]}>
@@ -44,16 +48,18 @@ export const Navbar = ({ links }) => {
 
                 <div className={style.navs}>
                     <NavLinks />
-                    <Button text="Contact" />
+                    <Link href={"contact"}>
+                        <Button text="Contact" />
+                    </Link>
                 </div>
                 <div
                     onClick={() => setOpen(!isOpen)}
                     className={style["mb-menu"]}
                 >
                     {isOpen ? (
-                        <CloseIcon fontSize="32px" color="#fff" />
+                        <CloseIcon fontSize="32px" color={isDark?"#fff":"#000"} />
                     ) : (
-                        <MenuIcon fontSize="32px" color="#fff" />
+                        <MenuIcon fontSize="32px" color={isDark?"#fff":"#000"} />
                     )}
                 </div>
             </nav>

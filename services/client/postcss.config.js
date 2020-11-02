@@ -3,6 +3,6 @@ module.exports = {
         "tailwindcss",
         "postcss-preset-env",
         "postcss-import",
-        "postcss-custom-properties"
+        "postcss-custom-properties",
     ],
 };

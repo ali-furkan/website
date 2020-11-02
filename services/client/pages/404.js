@@ -9,7 +9,7 @@ function Home() {
                     If you want go back to home page, you can click{" "}
                     <a className="underline" href="/">
                         this link
-                    </a>{" "}
+                    </a>
                 </h2>
             </div>
         </>

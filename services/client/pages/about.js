@@ -1,22 +1,20 @@
-import MainLayout from "@layouts/main";
+import MessageLayout from "@layouts/message";
 
-function About() {
+function AboutPage() {
     return (
         <>
-            <div className="w-full h-full flex items-center justify-center flex-col flex-1">
-                <h1 className="font-extrabold text-4xl">Not Ready yet</h1>
-                <h2>
-                    You can following this working from{" "}
-                    <a
-                        className="underline"
-                        href="https://github.com/ali-furkqn/Website"
-                    >
-                        github repo
-                    </a>{" "}
-                </h2>
-            </div>
+            You can following this working from{" "}
+            <a
+                className="underline"
+                href="https://github.com/ali-furkqn/Website"
+            >
+                github repo
+            </a>
         </>
     );
 }
 
-export default MainLayout(About);
+export default MessageLayout({
+    title: "Not Ready yet",
+    Description: AboutPage,
+});

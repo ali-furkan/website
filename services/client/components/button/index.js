@@ -1,7 +1,14 @@
 import PropTypes from "prop-types";
 import style from "./style.module.css";
 
-export const Button = ({ children, bgColor, textColor, text, size }) => (
+export const Button = ({
+    children,
+    bgColor,
+    textColor,
+    text,
+    size,
+    ...props
+}) => (
     <button
         className={[
             style.button,
@@ -9,6 +16,7 @@ export const Button = ({ children, bgColor, textColor, text, size }) => (
             `text-${textColor}`,
             `text-${size}`,
         ].join(" ")}
+        {...props}
     >
         {text ?? children}
     </button>

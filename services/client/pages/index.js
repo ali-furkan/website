@@ -1,18 +1,47 @@
+import React from "react";
+import dynamic from "next/dynamic";
+import { useTheme } from "@lib/theme";
 import MessageLayout from "@layouts/message";
+import HomeContainer from "containers/home";
+
+const HomePage = () => {
+    const [theme] = useTheme();
+    const [color, setColor] = React.useState();
+
+    React.useEffect(() => {
+        setColor(theme === "dark" ? "#fff" : "#000");
+    }, [theme]);
+
+    return (
+        <HomeContainer
+            tags={["Typescript", "React", "Nest"]}
+            links={[
+                {
+                    href: "/github",
+                    color,
+                    Icon: dynamic(() =>
+                        import("react-ionicons/lib/LogoGithub")
+                    ),
+                },
+                {
+                    href: "/twitter",
+                    color,
+                    Icon: dynamic(() =>
+                        import("react-ionicons/lib/LogoTwitter")
+                    ),
+                },
+                {
+                    href: "/dribbble",
+                    color,
+                    Icon: dynamic(() =>
+                        import("react-ionicons/lib/LogoDribbble")
+                    ),
+                },
+            ]}
+        />
+    );
+};
 
 export default MessageLayout({
-    title: "Not Ready yet",
-    Description() {
-        return (
-            <>
-                You can following this working from{" "}
-                <a
-                    className="underline"
-                    href="https://github.com/ali-furkqn/Website"
-                >
-                    github repo
-                </a>
-            </>
-        );
-    },
+    Description: HomePage,
 });

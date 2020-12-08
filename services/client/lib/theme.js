@@ -7,7 +7,6 @@ export const useTheme = () => {
     const ctxTheme = useContext(ThemeContext)
     
     useEffect(()=>{
-        console.log(ctxTheme)
         const themeHandler = () => {
             if(!window.matchMedia) 
                 return setTheme("dark")
@@ -20,7 +19,6 @@ export const useTheme = () => {
                 return setTheme(ctxTheme)
         }
         themeHandler()
-        console.log(ctxTheme)
     },[theme])
     return [theme,setTheme]
 }

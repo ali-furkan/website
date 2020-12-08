@@ -9,7 +9,7 @@
 |`npm run build`            | Start in development mode                 |
 |`npm run format`           | Format all files                          |
 |`npm run prettier:watch`   | Watch all files and Format it             |
-|`npm run prettier:watch`   | Run linter                                |
+|`npm run lint`             | Run linter                                |
 
 ## License
 

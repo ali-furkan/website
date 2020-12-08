@@ -1,0 +1,7 @@
+.hero {
+    @apply container mx-auto px-8 max-w-2xl text-center;
+}
+
+.title {
+    @apply text-5xl mb-4;
+}

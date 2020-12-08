@@ -1,12 +1,11 @@
-import { useContext, useEffect, useState } from "react";
+import { useState } from "react";
 import PropTypes from "prop-types";
-import Link from "next/link";
 import dynamic from "next/dynamic";
-import { Button } from "@components/button";
-import Config from "@config/configuration";
-import style from "./style.module.css";
 import Image from "next/image"
+import Link from "next/link";
+import { Button } from "@components/button";
 import { useTheme } from "@lib/theme";
+import style from "./navbar.module.css";
 
 const MenuIcon = dynamic(() => import("react-ionicons/lib/MdMenu"));
 const CloseIcon = dynamic(() => import("react-ionicons/lib/MdClose"));
@@ -32,17 +31,13 @@ export const Navbar = ({ links }) => {
         <>
             <nav className={style.navbar} role="navigation">
                 <Link href="/">
-                    <a className={style.logos}>
+                    <a tabIndex="0" className={style.logos}>
                         <Image
                             width={64}
                             height={64}
                             src={`/assets/logo-${isDark?"white":"black"}.png`}
                             alt="logo"
                         />
-                        <div className={style["logo-text"]}>
-                            <h1>{Config.Navbar.logo.text[0]}</h1>
-                            <h2>{Config.Navbar.logo.text[1]}</h2>
-                        </div>
                     </a>
                 </Link>
 

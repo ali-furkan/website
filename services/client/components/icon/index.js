@@ -5,7 +5,7 @@ import style from "./style.module.css"
 export function IconButton({href, Icon,className, size,...props}) {
     return (
         <Link href={href}>
-            <a className={[style.icon,className].join(" ")} tabIndex="0">
+            <a title={href} className={[style.icon,className].join(" ")} tabIndex="0">
                 <Icon fontSize={size} {...props} />
             </a>
         </Link>

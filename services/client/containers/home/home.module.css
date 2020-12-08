@@ -1,0 +1,19 @@
+.hero {
+    @apply flex flex-col items-center;
+}
+
+.name_title {
+    @apply -space-y-5 text-center;
+}
+
+.tag_list {
+    @apply flex my-4;
+}
+
+.tag {
+    @apply mx-1;
+}
+
+.icon_list {
+    @apply flex items-center my-4;
+}

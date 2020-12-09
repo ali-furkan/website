@@ -22,6 +22,7 @@ This service's installation is so easy. You can install it by follow the steps b
 ```
 
 - Copy `.env.example` and paste it as `.env`, fill the fields
+- Download [**Service account key**](https://console.cloud.google.com/apis/credentials/serviceaccountkey) as JSON and copy here (change file's name to `firebase.json` )
 
 - Start the application
     - To start as development mode with hot reloading: Use `make watch`
@@ -31,7 +32,7 @@ This service's installation is so easy. You can install it by follow the steps b
 
 ### Installation ( With Container )
 
-If you don't want to deal it as above, your pc need just a docker. You can find docker [here](https://www.docker.com/get-started)
+If you don't want to deal it as above, your pc need just a docker. *You can find docker [here](https://www.docker.com/get-started)*
 
 ```sh
     git clone https://github.com/ali-furkqn/Website website
@@ -41,6 +42,8 @@ If you don't want to deal it as above, your pc need just a docker. You can find 
     # Run Storage Container
     docker run -d -p 8080:8080 -t storage
 ```
+
+
 
 ## Commands (Makefile)
 

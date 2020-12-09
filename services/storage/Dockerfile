@@ -3,8 +3,10 @@ FROM golang:latest
 WORKDIR /app
 
 ARG ENV_PATH=.env
+ARG FB_PATH=firebase.json
 
 COPY ${ENV_PATH} .
+COPY ${FB_PATH} .
 
 COPY go.mod Makefile ./
 

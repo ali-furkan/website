@@ -1,4 +1,8 @@
 .env
+firebase.json
+
+tmp
+vendor
 
 # Binaries for programs and plugins
 *.exe

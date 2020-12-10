@@ -3,6 +3,7 @@ package storage
 import (
 	"bytes"
 	"context"
+	"fmt"
 	"io"
 	"log"
 	"path/filepath"
@@ -145,6 +146,19 @@ func (s *StorageService) Upload(c *fiber.Ctx) error {
 	}
 
 	defer f.Close()
+
+	t := file.Header["Content-Type"][0]
+
+	if strings.HasPrefix(t, "image") {
+		m, err := images.Decode(f, strings.Split(t, "/")[1])
+		if err != nil {
+			return commonHttp.ErrorMessage(c, fiber.StatusInternalServerError, err.Error())
+		}
+		size := m.Bounds().Size()
+		if size.X > config.GetMaxResolution() || size.Y > config.GetMaxResolution() {
+			return commonHttp.ErrorMessage(c, fiber.StatusBadRequest, fmt.Sprintf("Image Resolution must be smaller than %d px", config.GetMaxResolution()))
+		}
+	}
 
 	name := c.Params("id")
 	if name == "" {

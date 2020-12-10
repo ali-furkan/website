@@ -17,6 +17,8 @@ func Controller() *StorageController {
 func (s *StorageController) Load(router fiber.Router) {
 	router.Get("/:path/:id", Service().GetAsset)
 
+	router.Get("/:path", Service().GetList)
+
 	router.Put("/:path/:id", auth.Service().AuthMiddleware, Service().Upload)
 	router.Put("/:path", auth.Service().AuthMiddleware, Service().Upload)
 	router.Delete("/:path/:id", auth.Service().AuthMiddleware, Service().Delete)

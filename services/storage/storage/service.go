@@ -1,16 +1,21 @@
 package storage
 
 import (
+	"bytes"
 	"context"
 	"io"
 	"log"
 	"path/filepath"
 	commonHttp "storage/common/http"
 	"storage/config"
+	"storage/images"
+	"strconv"
+	"strings"
 
 	"cloud.google.com/go/storage"
 	"github.com/gofiber/fiber/v2"
 	"github.com/google/uuid"
+	"google.golang.org/api/iterator"
 	"google.golang.org/api/option"
 )
 
@@ -29,7 +34,7 @@ func Service() *StorageService {
 }
 
 func (s *StorageService) GetAsset(c *fiber.Ctx) error {
-
+	var err error
 	obj := bucket.Object(c.Params("path") + "/" + c.Params("id"))
 
 	nr, err := obj.NewReader(ctx)
@@ -42,7 +47,77 @@ func (s *StorageService) GetAsset(c *fiber.Ctx) error {
 
 	c.Set("Content-Type", nr.ContentType())
 
+	if strings.HasPrefix(nr.ContentType(), "image") {
+		var buf bytes.Buffer
+		sizeStr := c.Query("size")
+		size, err := strconv.ParseUint(sizeStr, 10, 0)
+		if err != nil {
+			if sizeStr == "" {
+				return c.SendStream(nr)
+			}
+			return commonHttp.ErrorMessage(c, fiber.StatusBadRequest, "Invalid 'size' query param. Please use ascii number")
+		}
+
+		t := strings.Split(nr.ContentType(), "/")[1]
+
+		buf, err = images.ReSize(uint(size), nr, t)
+
+		if err != nil {
+			return commonHttp.ErrorMessage(c, fiber.StatusBadRequest, err.Error())
+		}
+
+		return c.SendStream(bytes.NewReader(buf.Bytes()))
+	}
+
 	return c.SendStream(nr)
+}
+
+func (s *StorageService) GetList(c *fiber.Ctx) error {
+	sizeStr := c.Query("size", "10")
+	beginStr := c.Query("begin", "0")
+
+	size, err := strconv.Atoi(sizeStr)
+	if err != nil || size < 1 {
+		return commonHttp.ErrorMessage(c, fiber.StatusBadRequest, "Invalid 'size' query param. Please use ascii number")
+	}
+	begin, err := strconv.Atoi(beginStr)
+	if err != nil || begin < 0 {
+		return commonHttp.ErrorMessage(c, fiber.StatusBadRequest, "Invalid 'begin' query param. Please use ascii number")
+	}
+
+	var files []map[string]interface{}
+
+	query := &storage.Query{
+		Prefix: c.Params("path"),
+	}
+
+	it := bucket.Objects(ctx, query)
+
+	for i := 0; ; i++ {
+		attrs, err := it.Next()
+		if err == iterator.Done || size == i+1 {
+			break
+		}
+
+		if i < begin {
+			continue
+		}
+
+		if err != nil {
+			return commonHttp.ErrorMessage(c, fiber.StatusInternalServerError, err.Error())
+		}
+
+		files = append(files, fiber.Map{
+			"url":       c.BaseURL() + config.GetRootPath() + "/" + attrs.Name,
+			"type":      attrs.ContentType,
+			"size":      attrs.Size,
+			"createdAt": attrs.Created,
+		})
+	}
+	if files == nil {
+		return commonHttp.ErrorMessage(c, fiber.StatusNotFound, "File not found at "+c.Params("path"))
+	}
+	return c.JSON(files)
 }
 
 func (s *StorageService) Delete(c *fiber.Ctx) error {

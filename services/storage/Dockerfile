@@ -18,6 +18,7 @@ COPY common common
 COPY config config
 COPY loader loader
 COPY storage storage
+COPY images images
 
 ENV PORT=8080
 

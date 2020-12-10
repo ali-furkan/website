@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"context"
 	"fmt"
-	"io"
 	"log"
 	"path/filepath"
 	commonHttp "storage/common/http"
@@ -134,7 +133,7 @@ func (s *StorageService) Delete(c *fiber.Ctx) error {
 
 func (s *StorageService) Upload(c *fiber.Ctx) error {
 	file, err := c.FormFile("file")
-
+	var buf bytes.Buffer
 	if err != nil {
 		return commonHttp.ErrorMessage(c, fiber.StatusBadRequest, "Form-Data is required")
 	}
@@ -149,6 +148,8 @@ func (s *StorageService) Upload(c *fiber.Ctx) error {
 
 	t := file.Header["Content-Type"][0]
 
+	fmt.Println(t)
+
 	if strings.HasPrefix(t, "image") {
 		m, err := images.Decode(f, strings.Split(t, "/")[1])
 		if err != nil {
@@ -158,6 +159,12 @@ func (s *StorageService) Upload(c *fiber.Ctx) error {
 		if size.X > config.GetMaxResolution() || size.Y > config.GetMaxResolution() {
 			return commonHttp.ErrorMessage(c, fiber.StatusBadRequest, fmt.Sprintf("Image Resolution must be smaller than %d px", config.GetMaxResolution()))
 		}
+		buf, err = images.Encode(m, strings.Split(t, "/")[1])
+		if err != nil {
+			return commonHttp.ErrorMessage(c, fiber.StatusInternalServerError, err.Error())
+		}
+	} else {
+		buf.ReadFrom(f)
 	}
 
 	name := c.Params("id")
@@ -175,7 +182,7 @@ func (s *StorageService) Upload(c *fiber.Ctx) error {
 
 	sw := obj.NewWriter(ctx)
 
-	if _, err := io.Copy(sw, f); err != nil {
+	if _, err := sw.Write(buf.Bytes()); err != nil {
 		return commonHttp.ErrorMessage(c, fiber.StatusInternalServerError, err.Error())
 	}
 
@@ -186,7 +193,7 @@ func (s *StorageService) Upload(c *fiber.Ctx) error {
 	return c.JSON(fiber.Map{
 		"message": "Successfully Uploaded",
 		"metadata": fiber.Map{
-			"type": file.Header["Content-Type"][0],
+			"type": t,
 			"size": file.Size,
 			"ext":  filepath.Ext(file.Filename),
 		},

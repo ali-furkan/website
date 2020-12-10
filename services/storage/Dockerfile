@@ -13,7 +13,11 @@ COPY go.mod Makefile ./
 RUN make install
 
 COPY main.go .
+COPY auth auth
+COPY common common
 COPY config config
+COPY loader loader
+COPY storage storage
 
 ENV PORT=8080
 

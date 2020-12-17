@@ -8,11 +8,13 @@ export const Button = ({
     text,
     size,
     CustomComponent,
+    outline,
     ...props
 }) => {
     const componentProps = {
         className: [
-            style.button,
+            outline?style.button_outline:style.button,
+            outline?`border-${bgColor}`:"",
             `bg-${bgColor}`,
             `text-${textColor}`,
             `text-${size}`,
@@ -46,5 +48,6 @@ Button.propTypes = {
     textColor: PropTypes.string,
     size: PropTypes.string,
     text: PropTypes.string,
+    outline: PropTypes.bool,
     CustomComponent: PropTypes.func
 };

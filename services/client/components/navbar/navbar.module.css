@@ -1,9 +1,5 @@
 .navbar {
-    @apply flex m-auto justify-between items-center container py-2 px-8 sm:px-4 xl:px-0 select-none z-100;
-}
-
-.navbar * {
-    @apply z-100
+    @apply flex m-auto justify-between items-center container py-2 px-8 sm:px-4 xl:px-0 select-none;
 }
 
 .logos {

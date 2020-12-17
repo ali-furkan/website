@@ -1,6 +1,10 @@
 .header {
-    backdrop-filter: blur(2px);
-    @apply w-full sticky top-0
+    backdrop-filter: blur(3px);
+    @apply w-full sticky top-0 z-100 dark:bg-primary-500 light:bg-white;
+}
+
+.header_opacity {
+  @apply bg-opacity-25 !important;
 }
 
 .main {
@@ -24,7 +28,7 @@
 
 @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
   .navbar {
-    -webkit-backdrop-filter: blur(2px);
-    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(3px);
+    backdrop-filter: blur(3px);
   }
 }

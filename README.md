@@ -9,7 +9,8 @@ This repository is source code of My Website that contains my services. You can 
 This application covers the following services
 
 - Front-end client ( React.js )
-- Storage Service ( Nest.js )
+- Admin Dashboard ( with Front-end client )
+- Storage Service ( Golang )
 - Web Gateway ( NGINX )
 
 ![arch-plan](./assets/architect-plan.png)
@@ -19,10 +20,9 @@ I can't inform how does it because the first development hasn't completed yet
 
 ## To-Do
 
-- [ ] Do Storage Service
-- [ ] Do Web Gateway
-- [ ] Do Front-end Portfolio
-- [ ] Do Analytics Monitoring
+- [x] Do Storage Service
+- [x] Do Front-end Portfolio
+- [] Do Admin Dashboard
 
 ## License
 

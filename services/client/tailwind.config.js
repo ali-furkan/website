@@ -1,4 +1,4 @@
-const { colors } = require("./config/configuration");
+const { colors } = require("./config/colors");
 
 const colorWhiteList = Object.entries(colors)
     .map(([key, val]) => [
@@ -36,6 +36,10 @@ module.exports = {
             screens: {
                 light: { raw: "(prefers-color-scheme: light)" },
                 dark: { raw: "(prefers-color-scheme: dark)" },
+            },
+            height: {
+                50: "12.75rem",
+                52: "13.25rem"
             },
             boxShadow: {
                 lg: `0 10px 15px -3px ${colors.secondary[500]}40, 0 4px 6px -2px ${colors.secondary[500]}40`

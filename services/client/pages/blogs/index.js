@@ -57,10 +57,9 @@ export async function getStaticProps() {
         console.log("Blogs", e);
         return {
             revalidate: 30,
-            redirect: {
-                destination: "/",
-                permanent: false,
-            },
+            props: {
+                projects: []
+            }
         };
     }
 }

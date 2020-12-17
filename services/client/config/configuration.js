@@ -1,4 +1,6 @@
 module.exports = {
+    baseUrl: "https://s.alifurkan.co",
+
     Navbar: {
         logo: {
             img: "",
@@ -9,23 +11,9 @@ module.exports = {
                 text: "About Me",
                 href: "about",
             },
+            Blogs: "blogs",
             Projects: "projects",
             Github: "github",
-        },
-    },
-    colors: {
-        primary: {
-            500: "#060606",
-            400: "#181818",
-            300: "#383838",
-            200: "#686868",
-            100: "#909090",
-        },
-        secondary: {
-            500: "#2A1384",
-            400: "#4F2BDF",
-            300: "#8D7ADC",
-            200: "#D4CBF9",
         },
     },
 };

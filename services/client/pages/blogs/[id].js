@@ -1,4 +1,6 @@
 /* eslint-disable react/prop-types */
+import React from "react"
+import {useRouter} from "next/router"
 import renderToString from "next-mdx-remote/render-to-string";
 import hydrate from "next-mdx-remote/hydrate";
 import configuration from "@config/configuration";
@@ -8,6 +10,11 @@ import { Text } from "@components/text";
 import { Container } from "@components/container";
 
 const BlogPage = ({ source }) => {
+    const router = useRouter();
+    React.useEffect(() => {
+        if (!source) return router.push("/projects");
+    });
+    if (!source) return <h1>Page not found</h1>;
     const content = hydrate(source,{MdxPageHead, Text})
 
     return (
@@ -42,24 +49,26 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async ({ params }) => {
     try {
-        console.log("HELLO")
         const res = await fetch(configuration.baseUrl + "/blogs/" + params.id);
         if (!res.ok) throw new Error(res.statusText);
         const source = await res.text();
-        console.log("HELLO")
         const mdxSource = await renderToString(source, {
             components: { MdxPageHead, Text },
         });
 
         return {
+            revalidate: 60,
             props: {
-                source: mdxSource,
+                source: mdxSource||"",
             },
         };
     } catch (e) {
         console.log("Blog Page", e);
         return {
-            notFound: true,
+            revalidate: 60,
+            props: {
+                source: ""
+            }
         };
     }
 };

@@ -1,0 +1,11 @@
+.meta_wrapper {
+    @apply flex justify-between w-full;
+}
+
+.side_meta {
+    @apply flex flex-col;
+}
+
+.tag_wrapper {
+    @apply flex;
+}

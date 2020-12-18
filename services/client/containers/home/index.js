@@ -5,7 +5,7 @@ import { Text } from "@components/text";
 import style from "./home.module.css";
 import { useTheme } from "@lib/theme";
 
-const HomeContainer = ({ tags, links }) => {
+const HomeContainer = ({ title, subTitle, tags, links }) => {
     const [theme] = useTheme();
 
     return (
@@ -15,19 +15,25 @@ const HomeContainer = ({ tags, links }) => {
             </Text>
             <div className={style.name_title}>
                 <Text h1 b>
-                    ali furkan
+                    {title}
                 </Text>
                 <Text
                     h3
                     color={theme === "dark" ? "secondary-200" : "secondary-400"}
                     size={"lg"}
                 >
-                    full-stack developer
+                    {subTitle}
                 </Text>
             </div>
             <div className={style.tag_list}>
                 {tags.map((t, k) => (
-                    <Tag key={k} className={style.tag} label={t} />
+                    <Tag
+                        key={k}
+                        className={style.tag}
+                        label={t.label}
+                        bgColor={t.bgColor}
+                        textColor={t.textColor}
+                    />
                 ))}
             </div>
             <div className={style.icon_list}>
@@ -45,7 +51,9 @@ HomeContainer.defaultProps = {
 };
 
 HomeContainer.propTypes = {
-    tags: PropTypes.arrayOf(PropTypes.string).isRequired,
+    title: PropTypes.string,
+    subTitle: PropTypes.string,
+    tags: PropTypes.arrayOf(PropTypes.object).isRequired,
     links: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 

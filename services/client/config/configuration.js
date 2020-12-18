@@ -1,10 +1,8 @@
-module.exports = {
-    baseUrl: "https://s.alifurkan.co",
-
+export default {
     Navbar: {
         logo: {
-            img: "",
-            text: ["Ali Furkan", "Website"],
+            light: "/assets/logo-black.png",
+            dark: "/assets/logo-white.png",
         },
         links: {
             About: {
@@ -15,5 +13,20 @@ module.exports = {
             Projects: "projects",
             Github: "github",
         },
+    },
+    HomePage: {
+        title: "ali furkan",
+        subTitle: "a developer",
+        tags: [
+            {
+                label: "Typescript",
+            },
+            {
+                label: "React",
+            },
+            {
+                label: "Nest",
+            }
+        ],
     },
 };

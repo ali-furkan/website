@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { Button } from "@components/button";
 import Input from "@components/input";
-import configuration from "@config/configuration";
+import { api } from "@config/api";
 import MainLayout from "@layouts/main";
 import ListPage from "containers/list";
 
@@ -23,7 +23,7 @@ const ProjectPage = ({ blogs }) => {
 
 export async function getStaticProps() {
     try {
-        const res = await fetch(configuration.baseUrl + "/blogs-metas?size=6", {
+        const res = await fetch(api.baseUrl + "/blogs-metas?size=6", {
             headers: {
                 Authorization: process.env.STORAGE_TOKEN,
             },
@@ -58,8 +58,8 @@ export async function getStaticProps() {
         return {
             revalidate: 30,
             props: {
-                projects: []
-            }
+                projects: [],
+            },
         };
     }
 }

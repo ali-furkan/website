@@ -2,6 +2,10 @@
     @apply flex m-auto justify-between items-center container py-2 px-8 sm:px-4 xl:px-0 select-none;
 }
 
+.navbar * {
+    z-index: 100;
+}
+
 .logos {
     @apply flex justify-center items-center cursor-pointer
 }

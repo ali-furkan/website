@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import dynamic from "next/dynamic";
 import Image from "next/image"
 import Link from "next/link";
+import Config from "@config/configuration"
 import { Button } from "@components/button";
 import { useTheme } from "@lib/theme";
 import style from "./navbar.module.css";
@@ -35,7 +36,7 @@ export const Navbar = ({ links }) => {
                         <Image
                             width={64}
                             height={64}
-                            src={`/assets/logo-${isDark?"white":"black"}.png`}
+                            src={Config.Navbar.logo[isDark?"dark":"light"]}
                             alt="logo"
                         />
                     </a>

@@ -3,7 +3,7 @@ import React from "react"
 import {useRouter} from "next/router"
 import renderToString from "next-mdx-remote/render-to-string";
 import hydrate from "next-mdx-remote/hydrate";
-import configuration from "@config/configuration";
+import { api } from "@config/api";
 import MainLayout from "@layouts/main";
 import { MdxPageHead } from "@components/mdx-header";
 import { Text } from "@components/text";
@@ -26,7 +26,7 @@ const BlogPage = ({ source }) => {
 
 export const getStaticPaths = async () => {
     try {
-        const res = await fetch(configuration.baseUrl + "/blogs-metas", {
+        const res = await fetch(api.baseUrl + "/blogs-metas", {
             headers: {
                 Authorization: process.env.STORAGE_TOKEN,
             },
@@ -49,7 +49,7 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async ({ params }) => {
     try {
-        const res = await fetch(configuration.baseUrl + "/blogs/" + params.id);
+        const res = await fetch(api.baseUrl + "/blogs/" + params.id);
         if (!res.ok) throw new Error(res.statusText);
         const source = await res.text();
         const mdxSource = await renderToString(source, {

@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
-import { Button } from "@components/button";
-import Input from "@components/input";
-import { api } from "@config/api";
+// import { Button } from "@components/button";
+// import Input from "@components/input";
 import MainLayout from "@layouts/main";
 import ListPage from "containers/list";
 
@@ -14,16 +13,16 @@ const ProjectPage = ({ blogs }) => {
             }
             cards={blogs}
         >
-            <Input placeholder="joe@email.com">
+            {/* <Input placeholder="joe@email.com">
                 <Button>Subscribe</Button>
-            </Input>
+            </Input> */}
         </ListPage>
     );
 };
 
 export async function getStaticProps() {
     try {
-        const res = await fetch(api.baseUrl + "/blogs-metas?size=6", {
+        const res = await fetch(process.env.STORAGE_BASE_URL + "/blogs-metas?size=6", {
             headers: {
                 Authorization: process.env.STORAGE_TOKEN,
             },

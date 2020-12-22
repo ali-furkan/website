@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-import { api } from "@config/api";
 import MainLayout from "@layouts/main";
 import ListPage from "containers/list";
 
@@ -16,7 +15,7 @@ const ProjectPage = ({ projects }) => {
 export async function getStaticProps() {
     try {
         const res = await fetch(
-            api.baseUrl + "/projects-metas?size=6",
+            process.env.STORAGE_BASE_URL + "/projects-metas?size=6",
             {
                 headers: {
                     Authorization: process.env.STORAGE_TOKEN,

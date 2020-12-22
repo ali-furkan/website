@@ -6,8 +6,7 @@
             "@components/*": ["components/*"],
             "@layouts/*": ["layouts/*"],
             "@config/*": ["config/*"],
-            "@lib/*": ["lib/*"],
-            "@config": ["config/index.js"]
+            "@lib/*": ["lib/*"]
         }
     }
 }

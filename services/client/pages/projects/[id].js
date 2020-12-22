@@ -3,7 +3,6 @@ import React from "react";
 import { useRouter } from "next/router";
 import renderToString from "next-mdx-remote/render-to-string";
 import hydrate from "next-mdx-remote/hydrate";
-import { api } from "@config/api ";
 import MainLayout from "@layouts/main";
 import { MdxPageHead } from "@components/mdx-header";
 import { Text } from "@components/text";
@@ -22,7 +21,7 @@ const ProjectPage = ({ source }) => {
 
 export const getStaticPaths = async () => {
     try {
-        const res = await fetch(api.baseUrl + "/project-metas", {
+        const res = await fetch(process.env.STORAGE_BASE_URL + "/project-metas", {
             headers: {
                 Authorization: process.env.STORAGE_TOKEN,
             },
@@ -46,7 +45,7 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async ({ params }) => {
     try {
         const res = await fetch(
-            api.baseUrl + "/projects/" + params.id
+            process.env.STORAGE_BASE_URL + "/projects/" + params.id
         );
         if (!res.ok) throw new Error(res.statusText);
         const source = await res.text();

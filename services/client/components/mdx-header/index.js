@@ -1,10 +1,43 @@
+import React from "react";
 import propTypes from "prop-types";
 import Head from "next/head";
-import { Text } from "@components/text";
+import dynamic from "next/dynamic";
+import readingTime from "reading-time";
+import { useTheme } from "@lib/theme";
 import { Tag } from "@components/tag";
-import style from "./page.module.css"
-import Image from "next/image";
-import readingTime from "reading-time"
+import { Text } from "@components/text";
+import { IconButton } from "@components/icon";
+import style from "./page.module.css";
+
+const TwitterIco = dynamic(() => import("react-ionicons/lib/LogoTwitter"));
+const LinkedinIco = dynamic(() => import("react-ionicons/lib/LogoLinkedin"));
+const FacebookIco = dynamic(() => import("react-ionicons/lib/LogoFacebook"));
+const CopyIco = dynamic(() => import("react-ionicons/lib/MdCopy"));
+const DateIco = dynamic(() => import("react-ionicons/lib/MdCalendar"));
+const BookIco = dynamic(() => import("react-ionicons/lib/MdBook"));
+
+const months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "June",
+    "July",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+];
+
+const fmtDate = (s) => {
+    const cur = new Date();
+    const d = new Date(s);
+    return `${months[d.getMonth()]} ${d.getDay()}${
+        cur.getFullYear() !== d.getFullYear() ? ", " + d.getFullYear() : ""
+    }`;
+};
 
 export const MdxPageHead = ({
     title,
@@ -16,10 +49,30 @@ export const MdxPageHead = ({
     tags,
     source,
 }) => {
+    const [mediaTxt, setMediaTxt] = React.useState("");
+    const [curHref, setCurHref] = React.useState("");
+    const [color, setColor] = React.useState();
+
+    const [theme] = useTheme();
+
+    React.useEffect(() => {
+        setColor(theme === "dark" ? "#fff" : "#000");
+    }, [theme]);
+
+    React.useEffect(() => {
+        if (!window) return;
+        setCurHref(window.location.href);
+        setMediaTxt(
+            encodeURIComponent(
+                [title, "@ali_furkqn", window.location.href].join(" ")
+            )
+        );
+    }, []);
+
     return (
         <>
             <Head>
-                <title>{title}</title>
+                <title>{title} | Ali Furkan's Blogs</title>
                 <meta name="description" content={description} />
                 <meta name="keywords" content={keywords} />
                 <meta property="og:title" content={title} />
@@ -38,19 +91,59 @@ export const MdxPageHead = ({
             )}
             <div className={style.meta_wrapper}>
                 <div className={style.side_meta}>
-                    <Text>{createdAt}</Text>
-                    <Text>{readingTime(source).text} </Text>
-                    <div className={style.tag_wrapper} >
-                        <Text>Tags: </Text>
-                        {tags?.map((t, i) => (
-                            <Tag key={i} label={t.text} bgColor={t.color} />
-                        ))}
+                    <div className={style.side_meta_item}>
+                        <DateIco fonstSize={24} color={color} />
+                        <Text>{fmtDate(createdAt)}</Text>
+                    </div>
+                    <div className={style.side_meta_item}>
+                        <BookIco fonstSize={24} color={color} />
+                        <Text>{readingTime(source).text} </Text>
+                    </div>
+                    <div className={style.side_meta_item}>
+                        {tags && tags?.length > 0 && (
+                            <div className={style.tag_wrapper}>
+                                <Text b>Tags: </Text>
+                                {tags?.map((t, i) => (
+                                    <Tag
+                                        key={i}
+                                        label={t.text}
+                                        bgColor={t.color}
+                                    />
+                                ))}
+                            </div>
+                        )}
                     </div>
                 </div>
+                <div className={style.side_links}>
+                    <IconButton
+                        Icon={TwitterIco}
+                        href={`https://twitter.com/intent/tweet?text=${mediaTxt}`}
+                        size={24}
+                        color={color}
+                    />
+                    <IconButton
+                        Icon={LinkedinIco}
+                        href={`https://linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
+                            curHref
+                        )}`}
+                        size={24}
+                        color={color}
+                    />
+                    <IconButton
+                        Icon={FacebookIco}
+                        href={"#Hello"}
+                        size={24}
+                        color={color}
+                    />
+                    <IconButton
+                        Icon={CopyIco}
+                        href={"/"}
+                        size={24}
+                        color={color}
+                    />
+                </div>
             </div>
-            <Image
-                src={image}
-            />
+            {image && <img src={image} className={"mb-8"} />}
         </>
     );
 };
@@ -63,5 +156,5 @@ MdxPageHead.propTypes = {
     image: propTypes.string,
     createdAt: propTypes.string,
     tags: propTypes.arrayOf(propTypes.object),
-    source: propTypes.string
+    source: propTypes.string,
 };

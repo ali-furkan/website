@@ -1,11 +1,23 @@
 .meta_wrapper {
-    @apply flex justify-between w-full;
+    @apply flex justify-between w-full my-8;
 }
 
 .side_meta {
     @apply flex flex-col;
 }
 
+.side_links {
+    @apply flex items-center;
+}
+
 .tag_wrapper {
     @apply flex;
+}
+
+.side_meta_item {
+    @apply flex;
+}
+
+.side_meta_item svg {
+    @apply mr-3
 }

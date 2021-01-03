@@ -1,8 +1,9 @@
 /* eslint-disable react/prop-types */
 import MainLayout from "@layouts/main";
 import ListPage from "containers/list";
+import config from "@config/index";
 
-const ProjectPage = ({ projects }) => {
+const ProjectListPage = ({ projects }) => {
     return (
         <ListPage
             title={"Projects"}
@@ -14,14 +15,11 @@ const ProjectPage = ({ projects }) => {
 
 export async function getStaticProps() {
     try {
-        const res = await fetch(
-            process.env.STORAGE_BASE_URL + "/projects-metas?size=6",
-            {
-                headers: {
-                    Authorization: process.env.STORAGE_TOKEN,
-                },
-            }
-        );
+        const res = await fetch(config.baseUrl + "/projects-metas?size=6", {
+            headers: {
+                Authorization: process.env.STORAGE_TOKEN,
+            },
+        });
         if (!res.ok) throw new Error(res.statusText);
         const list = await res.json();
         const projects = await Promise.all(
@@ -38,9 +36,8 @@ export async function getStaticProps() {
         );
 
         return {
-            revalidate: 30,
             props: {
-                projects: projects.filter((p) => !!p),
+                projects: projects.filter((p) => p),
             },
         };
     } catch (e) {
@@ -48,10 +45,10 @@ export async function getStaticProps() {
         return {
             revalidate: 30,
             props: {
-                projects: []
-            }
+                projects: [],
+            },
         };
     }
 }
 
-export default MainLayout(ProjectPage);
+export default MainLayout(ProjectListPage);

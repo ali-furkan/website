@@ -9,9 +9,7 @@ const TitleSection = ({ children, title, content }) => {
                 {title}
             </Text>
             <Text h3>{content} </Text>
-            <div className={style.children}>
-                {children}
-            </div>
+            <div className={style.children}>{children}</div>
         </div>
     );
 };

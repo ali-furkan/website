@@ -9,8 +9,6 @@ module.exports = {
                 text: "About Me",
                 href: "about",
             },
-            Blogs: "blogs",
-            Projects: "projects",
             Github: "github",
         },
     },

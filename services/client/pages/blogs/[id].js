@@ -1,31 +1,32 @@
 /* eslint-disable react/prop-types */
-import React from "react"
-import {useRouter} from "next/router"
+import React from "react";
+import { useRouter } from "next/router";
 import renderToString from "next-mdx-remote/render-to-string";
 import hydrate from "next-mdx-remote/hydrate";
+import matter from "gray-matter";
+import Article from "containers/article";
 import MainLayout from "@layouts/main";
 import { MdxPageHead } from "@components/mdx-header";
+import { MdxPageText } from "@components/mdx-text";
 import { Text } from "@components/text";
-import { Container } from "@components/container";
+import config from "@config/index";
+
+const components = { MdxPageHead, MdxPageText, Text };
 
 const BlogPage = ({ source }) => {
     const router = useRouter();
     React.useEffect(() => {
-        if (!source) return router.push("/projects");
+        if (!source) return router.push("/blogs");
     });
     if (!source) return <h1>Page not found</h1>;
-    const content = hydrate(source,{MdxPageHead, Text})
+    const content = hydrate(source, { components });
 
-    return (
-        <Container>
-            {content}
-        </Container>
-    )
+    return <Article>{content}</Article>;
 };
 
 export const getStaticPaths = async () => {
     try {
-        const res = await fetch(process.env.STORAGE_BASE_URL + "/blogs-metas", {
+        const res = await fetch(config.baseUrl + "/blogs-metas", {
             headers: {
                 Authorization: process.env.STORAGE_TOKEN,
             },
@@ -33,41 +34,51 @@ export const getStaticPaths = async () => {
 
         if (!res.ok) throw new Error(res.statusText);
 
-        const blogs = await res.json();
+        const data = await res.json();
 
-        const paths = blogs.map((b) => ({
-            params: { id: b.href.query.id },
-        }));
+        const paths = await Promise.all(
+            data.map(async (b) => {
+                const res = await fetch(b.url);
+                if (!res.ok) return null;
+                const d = await res.json();
+                return { params: { id: d?.href?.query?.id } };
+            })
+        );
 
         return { paths, fallback: false };
     } catch (e) {
         console.debug("Blog Page getStaticPaths", e);
-        return { paths: [], fallback: false };
+        return { paths: [], fallback: true };
     }
 };
 
 export const getStaticProps = async ({ params }) => {
     try {
-        const res = await fetch(process.env.STORAGE_BASE_URL + "/blogs/" + params.id);
+        const res = await fetch(
+            config.baseUrl + "/blogs/" + encodeURIComponent(params.id)
+        );
         if (!res.ok) throw new Error(res.statusText);
         const source = await res.text();
-        const mdxSource = await renderToString(source, {
-            components: { MdxPageHead, Text },
+        const { content, data } = matter(source);
+        const mdxSource = await renderToString(content, {
+            components,
+            scope: data,
         });
 
         return {
             revalidate: 60,
             props: {
-                source: mdxSource||"",
+                source: mdxSource || "",
             },
         };
     } catch (e) {
-        console.log("Blog Page", e);
+        console.log(e);
         return {
-            revalidate: 60,
+            notFound: true,
+            revalidate: 5,
             props: {
-                source: ""
-            }
+                source: "",
+            },
         };
     }
 };

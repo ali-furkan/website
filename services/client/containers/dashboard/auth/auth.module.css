@@ -1,0 +1,3 @@
+.container {
+    @apply max-w-lg text-center mb-8;
+}

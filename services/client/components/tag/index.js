@@ -1,12 +1,15 @@
 import styles from "./style.module.css";
 import PropTypes from "prop-types";
 
-export const Tag = ({ label, bgColor, textColor, className,...props }) => {
+export const Tag = ({ label, bgColor, textColor, className, ...props }) => {
     return (
         <h2
-            className={[styles.tag, `bg-${bgColor}`, `text-${textColor}`,className].join(
-                " "
-            )}
+            className={[
+                styles.tag,
+                `bg-${bgColor}`,
+                `text-${textColor}`,
+                className,
+            ].join(" ")}
             {...props}
         >
             {label}
@@ -18,7 +21,7 @@ Tag.defaultProps = {
     label: "Lorem Ipsum",
     bgColor: "secondary-400",
     textColor: "secondary-200",
-    className: ""
+    className: "",
 };
 
 Tag.propTypes = {

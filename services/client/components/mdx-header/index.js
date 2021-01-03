@@ -2,42 +2,26 @@ import React from "react";
 import propTypes from "prop-types";
 import Head from "next/head";
 import dynamic from "next/dynamic";
-import readingTime from "reading-time";
+
+import { fmtDate } from "@lib/fmt";
 import { useTheme } from "@lib/theme";
+
 import { Tag } from "@components/tag";
 import { Text } from "@components/text";
 import { IconButton } from "@components/icon";
+
 import style from "./page.module.css";
 
-const TwitterIco = dynamic(() => import("react-ionicons/lib/LogoTwitter"));
-const LinkedinIco = dynamic(() => import("react-ionicons/lib/LogoLinkedin"));
+const TwitterIco = dynamic(() => import("react-ionicons/lib/LogoTwitter"), {
+    ssr: true,
+});
+const LinkedinIco = dynamic(() => import("react-ionicons/lib/LogoLinkedin"), {
+    srr: true,
+});
 const FacebookIco = dynamic(() => import("react-ionicons/lib/LogoFacebook"));
 const CopyIco = dynamic(() => import("react-ionicons/lib/MdCopy"));
 const DateIco = dynamic(() => import("react-ionicons/lib/MdCalendar"));
 const BookIco = dynamic(() => import("react-ionicons/lib/MdBook"));
-
-const months = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "June",
-    "July",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec",
-];
-
-const fmtDate = (s) => {
-    const cur = new Date();
-    const d = new Date(s);
-    return `${months[d.getMonth()]} ${d.getDay()}${
-        cur.getFullYear() !== d.getFullYear() ? ", " + d.getFullYear() : ""
-    }`;
-};
 
 export const MdxPageHead = ({
     title,
@@ -47,7 +31,7 @@ export const MdxPageHead = ({
     image,
     createdAt,
     tags,
-    source,
+    readingTime,
 }) => {
     const [mediaTxt, setMediaTxt] = React.useState("");
     const [curHref, setCurHref] = React.useState("");
@@ -95,10 +79,12 @@ export const MdxPageHead = ({
                         <DateIco fonstSize={24} color={color} />
                         <Text>{fmtDate(createdAt)}</Text>
                     </div>
-                    <div className={style.side_meta_item}>
-                        <BookIco fonstSize={24} color={color} />
-                        <Text>{readingTime(source).text} </Text>
-                    </div>
+                    {readingTime && (
+                        <div className={style.side_meta_item}>
+                            <BookIco fonstSize={24} color={color} />
+                            <Text>{readingTime} </Text>
+                        </div>
+                    )}
                     <div className={style.side_meta_item}>
                         {tags && tags?.length > 0 && (
                             <div className={style.tag_wrapper}>
@@ -156,5 +142,6 @@ MdxPageHead.propTypes = {
     image: propTypes.string,
     createdAt: propTypes.string,
     tags: propTypes.arrayOf(propTypes.object),
+    readingTime: propTypes.string,
     source: propTypes.string,
 };

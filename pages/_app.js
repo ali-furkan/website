@@ -2,8 +2,9 @@
 import Head from "next/head";
 import { AuthProvider } from "contexts/auth";
 import { ThemeProvider } from "contexts/theme";
-import config from "@config/index";
 import { Toasty } from "@components/toasty";
+import config from "@config/index";
+import webConfig from "web.config";
 
 import "@styles/tailwind.css";
 import "@styles/toast.css";
@@ -18,19 +19,22 @@ const MyApp = ({ Component, pageProps }) => {
         <ThemeProvider>
             <AuthProvider>
                 <Head>
-                    <title>Ali Furkan - Website</title>
-                    <meta name="keywords" content="Ali Furkan, Portfolio" />
-                    <meta name="description" content="Ali Furkan's Portfolio" />
-                    <meta name="author" content="Ali Furkan" />
-                    <meta property="og:title" content="Ali Furkan - Website" />
+                    <title>{webConfig.Meta.title}</title>
+                    <meta name="theme-color" content={webConfig.Meta.color} />
+                    <meta name="author" content={webConfig.Meta.author} />
+                    <meta name="keywords" content={webConfig.Meta.keywords} />
+                    <meta property="og:title" content={webConfig.Meta.title} />
+                    <meta property="og:url" content={webConfig.PublishDomain} />
+                    <meta property="og:image" content={webConfig.Meta.image} />
+                    <meta property="og:og:locale" content="en_GB" />
+                    <meta property="og:og:locale:alternate" content="tr_TR" />
+                    <meta
+                        name="description"
+                        content={webConfig.Meta.description}
+                    />
                     <meta
                         property="og:description"
-                        content="Ali Furkan - Website"
-                    />
-                    <meta name="theme-color" content="#4F2BDF" />
-                    <meta
-                        property="og:image"
-                        content="https://raw.githubusercontent.com/ali-furkqn/Website/master/assets/repo-banner.png"
+                        content={webConfig.Meta.description}
                     />
                     <link rel="manifest" href="/manifest.json" />
                 </Head>

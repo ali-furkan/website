@@ -16,7 +16,7 @@ function Description() {
 export default MessageLayout({
     title: "Page not found",
     options: {
-        navbar: false
+        navbar: false,
     },
-    Description
+    Description,
 });

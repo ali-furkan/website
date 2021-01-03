@@ -14,8 +14,16 @@
     @apply flex;
 }
 
+.tag_wrapper *:first-child {
+    @apply mr-3;
+}
+
+.tag_wrapper > * {
+    @apply mr-2
+}
+
 .side_meta_item {
-    @apply flex;
+    @apply flex my-1;
 }
 
 .side_meta_item svg {

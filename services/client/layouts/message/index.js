@@ -1,16 +1,16 @@
 import PropTypes from "prop-types";
-import Config from "@config/configuration";
+import Config from "web.config";
 import style from "./layout.module.css";
 import dynamic from "next/dynamic";
 
 /**
  * Message Layout
- * @param {{ 
- *  title:string; 
- *  description:string; 
+ * @param {{
+ *  title:string;
+ *  description:string;
  *  Description: ()=>JSX.Element;
- *  options: { navbar:boolean,links:{[props:string]:any} 
- * } }} param0 
+ *  options: { navbar:boolean,links:{[props:string]:any}
+ * } }} param0
  */
 const MessageLayout = ({ title, description, Description, options }) => {
     options =
@@ -32,7 +32,7 @@ const MessageLayout = ({ title, description, Description, options }) => {
             {options.navbar ? <LazyNavbar /> : null}
             <main className={style.main}>
                 <div className={style.wrapper}>
-                    {title?<h1 className={style.title}>{title}</h1>:null}
+                    {title ? <h1 className={style.title}>{title}</h1> : null}
                     {<Description /> ?? <p>{description}</p>}
                 </div>
             </main>

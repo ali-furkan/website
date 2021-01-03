@@ -47,7 +47,7 @@
 }
 
 .mb-nav {
-    @apply sm:hidden flex w-screen h-screen fixed top-0 dark:bg-primary-500 light:bg-white z-99
+    @apply sm:hidden flex w-full h-screen fixed top-0 dark:bg-primary-500 light:bg-white z-99
 }
 
 .mb-nav * {

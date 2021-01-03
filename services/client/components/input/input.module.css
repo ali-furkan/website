@@ -3,7 +3,7 @@
 }
 
 .label {
-    @apply px-4;
+    @apply py-2;
 }
 
 .label p {
@@ -11,15 +11,15 @@
 }
 
 .wrapper {
-    @apply w-full flex rounded-lg justify-center items-center p-2 bg-secondary-300 light:bg-secondary-200 ;
+    @apply w-full flex rounded-lg justify-center items-center bg-primary-400 light:bg-gray-100 light:shadow-lg;
 }
 
 .wrapper input {
-    @apply outline-none text-base px-2 py-1 font-semibold bg-transparent w-full text-white light:text-secondary-500;
+    @apply outline-none text-base px-4 py-4 font-semibold bg-transparent w-full text-white light:text-primary-500;
 }
 
 .wrapper input::placeholder {
-    @apply opacity-50 select-none text-white light:text-secondary-400;
+    @apply opacity-50 select-none text-white light:text-primary-500 light:opacity-75;
 }
 
 .wrapper input:focus {

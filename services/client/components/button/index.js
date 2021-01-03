@@ -13,28 +13,23 @@ export const Button = ({
 }) => {
     const componentProps = {
         className: [
-            outline?style.button_outline:style.button,
-            outline?`border-${bgColor}`:"",
+            outline ? style.button_outline : style.button,
+            outline ? `border-${bgColor}` : "",
+            size ? style[`button_${size}`] : "",
             `bg-${bgColor}`,
             `text-${textColor}`,
             `text-${size}`,
         ].join(" "),
-        ...props
-    }
-    if(CustomComponent)
+        ...props,
+    };
+    if (CustomComponent)
         return (
             <CustomComponent {...componentProps}>
-                {text??children}
+                {text ?? children}
             </CustomComponent>
-        )
-    return (
-        <button
-            {...componentProps}
-        >
-            {text ?? children}
-        </button>
-    ) 
-}
+        );
+    return <button {...componentProps}>{text ?? children}</button>;
+};
 
 Button.defaultProps = {
     bgColor: "secondary-400",
@@ -49,5 +44,5 @@ Button.propTypes = {
     size: PropTypes.string,
     text: PropTypes.string,
     outline: PropTypes.bool,
-    CustomComponent: PropTypes.func
+    CustomComponent: PropTypes.func,
 };

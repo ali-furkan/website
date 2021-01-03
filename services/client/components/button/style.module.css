@@ -5,3 +5,11 @@
 .button_outline {
     @apply font-semibold py-2 px-6 rounded ease-in-out duration-200 bg-opacity-25 cursor-pointer border-2 hover:bg-opacity-100
 }
+
+.button_sm {
+    @apply py-1 px-4;
+}
+
+.button_sm * {
+    @apply h-full;
+}

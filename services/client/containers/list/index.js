@@ -4,8 +4,9 @@ import { Container } from "@components/container";
 import { Card } from "@components/card";
 import { Text } from "@components/text";
 import style from "./list.module.css";
+import { fmtDate } from "@lib/fmt";
 
-const ListPage = ({ title, content, children, cards }) => {
+const ListContainer = ({ title, content, children, cards }) => {
     return (
         <Container>
             <TitleSection title={title} content={content}>
@@ -18,18 +19,18 @@ const ListPage = ({ title, content, children, cards }) => {
             )}
             <div className={style.card_list}>
                 {cards?.map((c, key) => (
-                    <Card key={key} {...c} />
+                    <Card key={key} {...c} date={fmtDate(c.createdAt)} />
                 ))}
             </div>
         </Container>
     );
 };
 
-ListPage.propTypes = {
+ListContainer.propTypes = {
     title: PropTypes.string,
     content: PropTypes.string,
     children: PropTypes.any,
     cards: PropTypes.arrayOf(PropTypes.object),
 };
 
-export default ListPage;
+export default ListContainer;

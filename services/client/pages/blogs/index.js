@@ -3,6 +3,7 @@
 // import Input from "@components/input";
 import MainLayout from "@layouts/main";
 import ListPage from "containers/list";
+import config from "@config/index";
 
 const ProjectPage = ({ blogs }) => {
     return (
@@ -22,13 +23,15 @@ const ProjectPage = ({ blogs }) => {
 
 export async function getStaticProps() {
     try {
-        const res = await fetch(process.env.STORAGE_BASE_URL + "/blogs-metas?size=6", {
+        const res = await fetch(config.baseUrl + "/blogs-metas?size=6", {
             headers: {
                 Authorization: process.env.STORAGE_TOKEN,
             },
         });
         if (!res.ok) throw new Error(res.statusText);
+
         const list = await res.json();
+
         const blogs = await Promise.all(
             list.map(async (b) => {
                 try {
@@ -40,11 +43,6 @@ export async function getStaticProps() {
                     return undefined;
                 }
             })
-        );
-
-        console.log(
-            "BLOGS",
-            blogs.filter((p) => !!p)
         );
 
         return {

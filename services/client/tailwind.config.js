@@ -39,10 +39,10 @@ module.exports = {
             },
             height: {
                 50: "12.75rem",
-                52: "13.25rem"
+                52: "13.25rem",
             },
             boxShadow: {
-                lg: `0 10px 15px -3px ${colors.secondary[500]}40, 0 4px 6px -2px ${colors.secondary[500]}40`
+                lg: `0 10px 20px -3px ${colors.secondary[500]}40`,
             },
             borderRadius: {
                 default: "12px",
@@ -51,6 +51,7 @@ module.exports = {
         },
     },
     plugins: [
+        require("@tailwindcss/typography"),
         ({ addBase, config }) => {
             addBase({
                 body: {

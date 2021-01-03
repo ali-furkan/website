@@ -2,10 +2,10 @@ import PropTypes from "prop-types";
 import style from "./text.module.css";
 
 /**
- * 
- * @param {{ 
- * children: any; 
- * Component?: import("react").JSXElementConstructor; 
+ *
+ * @param {{
+ * children: any;
+ * Component?: import("react").JSXElementConstructor;
  * color?: string;
  * size?: string;
  * p?: boolean;
@@ -16,7 +16,7 @@ import style from "./text.module.css";
  * h2?: boolean;
  * h3?: boolean;
  * h4?: boolean;
- * }&import("react").ComponentProps<"p"|"h1">} props 
+ * }&import("react").ComponentProps<"p"|"h1">} props
  */
 export const Text = ({
     children,
@@ -40,8 +40,8 @@ export const Text = ({
         color ? `text-${color}` : undefined,
         size ? style[size] : undefined,
         italic ? style["text-italic"] : undefined,
-        className
-    ].filter(p=>p);
+        className,
+    ].filter((p) => p);
 
     if (Component) return <Component {...props}>{children}</Component>;
 
@@ -68,6 +68,13 @@ export const Text = ({
             <h4 className={[style.h4, ...classNames].join(" ")} {...props}>
                 {children}
             </h4>
+        );
+
+    if (p)
+        return (
+            <p className={classNames.join(" ")} {...props}>
+                {children}
+            </p>
         );
 
     if (b)
@@ -101,5 +108,5 @@ Text.propTypes = {
     h2: PropTypes.bool,
     h3: PropTypes.bool,
     h4: PropTypes.bool,
-    className: PropTypes.string
+    className: PropTypes.string,
 };

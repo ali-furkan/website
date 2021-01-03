@@ -1,6 +1,6 @@
 import MessageLayout from "@layouts/message";
 import AboutContainer from "containers/about";
-import Config from "@config/configuration"
+import Config from "web.config";
 
 function AboutPage() {
     return (
@@ -11,5 +11,5 @@ function AboutPage() {
 }
 
 export default MessageLayout({
-    Description: AboutPage
+    Description: AboutPage,
 });

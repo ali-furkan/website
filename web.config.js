@@ -1,4 +1,13 @@
 module.exports = {
+    Meta: {
+        title: "Ali Furkan's Portfolio",
+        keywords: "Ali Furkan, Portfolio, Github, React, Nest, Typescript",
+        description:
+            "Ali Furkan, personal website to showcase my career and development skills. I'm an 17 years old developer living in Istanbul and I'm trying to improve myself, learn and share what i learn. I love to develop stuffs with coding in summary",
+        author: "Ali Furkan",
+        image: "/assets/banner.png",
+        color: "#4F2BDF",
+    },
     Navbar: {
         logo: {
             light: "/assets/logo-black.png",
@@ -30,7 +39,7 @@ module.exports = {
     AboutPage: {
         title: "About Me",
         content:
-            "I'm Ali Furkan. I'm full-stack developer who care UI design with Modern Javascript. I have been coding stuff for 5 years. I'm currently interested js, ts, golang, C++. I love for Modern Javascript including React, React Native, Mobx, Graphql and Node. Apart from Coding, I like playing gaming, drawing picture and learning something new",
+            "I'm Ali Furkan and I'm an 17 years old developer living in Istanbul and I'm trying to improve myself, learn and share what i learn. I love everything about coding in summary. Also I'm developer who care UI design with Modern Javascript. I have been coding stuff for 5 years. I'm currently interested js, ts, golang, c++. I love for Modern Javascript including React, React Native, Mobx, Graphql and Node. Apart from Coding, I like playing gaming, drawing picture and learning something new",
     },
     StorageDomain: "s.alifurkan.co",
     PublishDomain: "alifurkan.co",

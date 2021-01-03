@@ -1,4 +1,6 @@
+const webConfig = require("./web.config");
+
 module.exports = {
-    siteUrl: "https://alifurkan.co",
+    siteUrl: `https://${webConfig.PublishDomain}`,
     generateRobotsTxt: true,
 };

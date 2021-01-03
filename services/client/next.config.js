@@ -1,30 +1,34 @@
+const configuration = require("./web.config");
+
 module.exports = {
     cssModules: true,
+    images: {
+        domains: [configuration.StorageDomain],
+    },
     async redirects() {
+        const socialLinks = Object.entries(configuration.SocialLinks).map(
+            ([k, v]) => ({
+                source: `/${k}`,
+                destination: v,
+                permanent: false,
+            })
+        );
+
         return [
-            {
-                source: "/github",
-                destination: "https://github.com/ali-furkqn",
-                permanent: false,
-            },
-            {
-                source: "/twitter",
-                destination: "https://twitter.com/AliFurkqn",
-                permanent: false,
-            },
-            {
-                source: "/dribbble",
-                destination: "https://dribbble.com/ali_furkan",
-                permanent: false,
-            },
+            ...socialLinks,
             {
                 source: "/p/:p",
                 destination: "/projects/:p",
                 permanent: false,
             },
             {
+                source: "/b/:b",
+                destination: "/blogs/:b",
+                permanent: false,
+            },
+            {
                 source: "/i/:image",
-                destination: "https://a.alifurkan.co/i/:image",
+                destination: `https://${configuration.StorageDomain}/i/:image`,
                 permanent: false,
             },
         ];

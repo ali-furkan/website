@@ -1,9 +1,9 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 import dynamic from "next/dynamic";
-import Image from "next/image"
+import Image from "next/image";
 import Link from "next/link";
-import Config from "@config/configuration"
+import Config from "web.config";
 import { Button } from "@components/button";
 import { useTheme } from "@lib/theme";
 import style from "./navbar.module.css";
@@ -13,8 +13,8 @@ const CloseIcon = dynamic(() => import("react-ionicons/lib/MdClose"));
 
 export const Navbar = ({ links }) => {
     const [isOpen, setOpen] = useState(false);
-    const [theme] = useTheme()
-    const isDark = theme === "dark"
+    const [theme] = useTheme();
+    const isDark = theme === "dark";
 
     const NavLinks = () => (
         <ul className={style.links}>
@@ -36,7 +36,7 @@ export const Navbar = ({ links }) => {
                         <Image
                             width={64}
                             height={64}
-                            src={Config.Navbar.logo[isDark?"dark":"light"]}
+                            src={Config.Navbar.logo[isDark ? "dark" : "light"]}
                             alt="logo"
                         />
                     </a>
@@ -44,7 +44,7 @@ export const Navbar = ({ links }) => {
 
                 <div className={style.navs}>
                     <NavLinks />
-                    <Link href={"contact"}>
+                    <Link href={"/contact"}>
                         <Button text="Contact" />
                     </Link>
                 </div>
@@ -53,9 +53,15 @@ export const Navbar = ({ links }) => {
                     className={style["mb-menu"]}
                 >
                     {isOpen ? (
-                        <CloseIcon fontSize="32px" color={isDark?"#fff":"#000"} />
+                        <CloseIcon
+                            fontSize="32px"
+                            color={isDark ? "#fff" : "#000"}
+                        />
                     ) : (
-                        <MenuIcon fontSize="32px" color={isDark?"#fff":"#000"} />
+                        <MenuIcon
+                            fontSize="32px"
+                            color={isDark ? "#fff" : "#000"}
+                        />
                     )}
                 </div>
             </nav>
@@ -75,7 +81,11 @@ export const Navbar = ({ links }) => {
 export const NavLink = ({ href, text }) => {
     return (
         <li>
-            <Link href={encodeURIComponent(href)}>
+            <Link
+                href={`${!href.startsWith("/") ? "/" : ""}${encodeURIComponent(
+                    href
+                )}`}
+            >
                 <a tabIndex="0" className={style.link}>
                     {text}
                 </a>

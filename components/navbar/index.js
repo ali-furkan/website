@@ -39,7 +39,9 @@ export const Navbar = ({ links }) => {
                         <Image
                             width={64}
                             height={64}
-                            src={webConfig.Navbar.logo[isDark ? "dark" : "light"]}
+                            src={
+                                webConfig.Navbar.logo[isDark ? "dark" : "light"]
+                            }
                             alt="logo"
                         />
                     </a>

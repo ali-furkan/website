@@ -2,6 +2,10 @@ import React from "react";
 import propTypes from "prop-types";
 import Head from "next/head";
 import dynamic from "next/dynamic";
+import useClipboard from "react-use-clipboard";
+import { toast } from "react-toastify";
+
+import config from "@/config";
 
 import { fmtDate } from "@/lib/fmt";
 import { useTheme } from "@/lib/theme";
@@ -14,7 +18,6 @@ import style from "./page.module.css";
 
 const TwitterIco = dynamic(() => import("react-ionicons/lib/LogoTwitter"));
 const LinkedinIco = dynamic(() => import("react-ionicons/lib/LogoLinkedin"));
-const FacebookIco = dynamic(() => import("react-ionicons/lib/LogoFacebook"));
 const CopyIco = dynamic(() => import("react-ionicons/lib/MdCopy"));
 const DateIco = dynamic(() => import("react-ionicons/lib/MdCalendar"));
 const BookIco = dynamic(() => import("react-ionicons/lib/MdBook"));
@@ -34,6 +37,9 @@ export const MdxPageHead = ({
     const [color, setColor] = React.useState();
 
     const [theme] = useTheme();
+    const [isCopied, setCopied] = useClipboard(curHref, {
+        successDuration: 5000,
+    });
 
     React.useEffect(() => {
         setColor(theme === "dark" ? "#fff" : "#000");
@@ -49,19 +55,29 @@ export const MdxPageHead = ({
         );
     }, []);
 
+    React.useEffect(() => {
+        if (!isCopied) return;
+        toast.dark("Blog URL copied", {
+            className: "toasty",
+        });
+    }, [isCopied]);
+
     return (
         <>
             <Head>
-                <title>{title} | Ali Furkan's Blogs</title>
+                <title>{title} | Ali Furkan&apos;s Blog</title>
                 <meta name="description" content={description} />
                 <meta name="keywords" content={keywords} />
-                <meta property="og:title" content={title} />
+                <meta
+                    property="og:title"
+                    content={`${title} | Ali Furkan's Blog`}
+                />
                 <meta property="og:description" content={description} />
                 <meta property="og:type" content="article" />
                 <meta property="article:author" content="Ali Furkan Kurt" />
                 {image && <meta property="og:image" content={image} />}
             </Head>
-            <Text h1 b>
+            <Text h1 b className={style.title}>
                 {title}
             </Text>
             {subTitle && (
@@ -100,7 +116,7 @@ export const MdxPageHead = ({
                     <IconButton
                         Icon={TwitterIco}
                         href={`https://twitter.com/intent/tweet?text=${mediaTxt}`}
-                        size={24}
+                        size={"24px"}
                         color={color}
                     />
                     <IconButton
@@ -108,19 +124,13 @@ export const MdxPageHead = ({
                         href={`https://linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
                             curHref
                         )}`}
-                        size={24}
-                        color={color}
-                    />
-                    <IconButton
-                        Icon={FacebookIco}
-                        href={"#Hello"}
-                        size={24}
+                        size="24px"
                         color={color}
                     />
                     <IconButton
                         Icon={CopyIco}
-                        href={"/"}
-                        size={24}
+                        onClick={setCopied}
+                        size="24px"
                         color={color}
                     />
                 </div>

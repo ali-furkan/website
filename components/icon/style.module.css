@@ -4,5 +4,5 @@
 }
 
 .icon {
-    @apply duration-200 ease-in transition-all mx-2
+    @apply duration-200 ease-in transition-all mx-2 cursor-pointer
 }

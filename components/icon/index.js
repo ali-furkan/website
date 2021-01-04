@@ -4,20 +4,31 @@ import style from "./style.module.css";
 
 /**
  * Icon Button
- * @param {{ href: string; Icon:import("react").Component; className: string; size: string;}} param0
+ * @param {{ href: string; Icon:import("react").Component; className: string; size: string; onClick?: ()=>void}} param0
  */
-export function IconButton({ href, Icon, className, size, ...props }) {
-    return (
-        <Link href={href}>
-            <a
-                title={href}
+export function IconButton({ href, Icon, className, size, onClick, ...props }) {
+    if (onClick)
+        return (
+            <div
                 className={[style.icon, className].join(" ")}
-                tabIndex="0"
+                onClick={onClick}
             >
                 <Icon fontSize={size} {...props} />
-            </a>
-        </Link>
-    );
+            </div>
+        );
+
+    if (href)
+        return (
+            <Link href={href}>
+                <a
+                    title={href}
+                    className={[style.icon, className].join(" ")}
+                    tabIndex="0"
+                >
+                    <Icon fontSize={size} {...props} />
+                </a>
+            </Link>
+        );
 }
 
 IconButton.defaultProps = {
@@ -28,5 +39,6 @@ IconButton.propTypes = {
     href: PropTypes.string,
     Icon: PropTypes.any,
     className: PropTypes.string,
-    size: PropTypes.number,
+    size: PropTypes.string,
+    onClick: PropTypes.func,
 };

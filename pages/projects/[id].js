@@ -13,7 +13,6 @@ import { MdxPageText } from "@/components/mdx-text";
 import { Text } from "@/components/text";
 import Article from "@/containers/article";
 
-
 const components = { MdxPageHead, MdxPageText, Text };
 
 const ProjectPage = ({ source }) => {

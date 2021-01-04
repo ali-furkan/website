@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { parseCookies } from "nookies";
 import config from "@/config";
-import { withAuth } from "@/lib/withAuth";
+import { withAuth } from "@/lib/with-auth";
 import MainLayout from "@/layouts/main";
 import { DashboardMain } from "@/containers/dashboard/main";
 

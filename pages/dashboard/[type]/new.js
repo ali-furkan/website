@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import { parseCookies } from "nookies";
 import { toast } from "react-toastify";
 
-import { withAuth } from "@/lib/withAuth";
+import { withAuth } from "@/lib/with-auth";
 import { createPost } from "@/lib/api/create-post";
 
 import { EditProvider } from "@/contexts/edit";

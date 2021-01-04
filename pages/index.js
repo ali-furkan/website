@@ -1,9 +1,9 @@
 import React from "react";
 import dynamic from "next/dynamic";
-import Config from "web.config";
-import { useTheme } from "@lib/theme";
-import MessageLayout from "@layouts/message";
-import HomeContainer from "containers/home";
+import webConfig from "web.config";
+import { useTheme } from "@/lib/theme";
+import MessageLayout from "@/layouts/message";
+import HomeContainer from "@/containers/home";
 
 const HomePage = () => {
     const [theme] = useTheme();
@@ -16,9 +16,9 @@ const HomePage = () => {
     return (
         <MessageLayout>
             <HomeContainer
-                title={Config.HomePage.title}
-                subTitle={Config.HomePage.subTitle}
-                tags={Config.HomePage.tags}
+                title={webConfig.HomePage.title}
+                subTitle={webConfig.HomePage.subTitle}
+                tags={webConfig.HomePage.tags}
                 links={[
                     {
                         href: "/github",

@@ -1,15 +1,17 @@
 /* eslint-disable react/prop-types */
 import React from "react";
 import { useRouter } from "next/router";
-import renderToString from "next-mdx-remote/render-to-string";
 import hydrate from "next-mdx-remote/hydrate";
+import renderToString from "next-mdx-remote/render-to-string";
 import matter from "gray-matter";
-import Article from "containers/article";
-import MainLayout from "@layouts/main";
-import { MdxPageHead } from "@components/mdx-header";
-import { MdxPageText } from "@components/mdx-text";
-import { Text } from "@components/text";
-import config from "@config/index";
+
+import config from "@/config";
+
+import MainLayout from "@/layouts/main";
+import { MdxPageHead } from "@/components/mdx-header";
+import { MdxPageText } from "@/components/mdx-text";
+import { Text } from "@/components/text";
+import Article from "@/containers/article";
 
 const components = { MdxPageHead, MdxPageText, Text };
 

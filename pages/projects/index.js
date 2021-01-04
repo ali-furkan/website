@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
-import MainLayout from "@layouts/main";
-import ListPage from "containers/list";
-import config from "@config/index";
+import config from "@/config";
+import MainLayout from "@/layouts/main";
+import ListPage from "@/containers/list";
 
 const ProjectListPage = ({ projects }) => {
     return (

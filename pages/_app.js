@@ -1,13 +1,14 @@
 /* eslint-disable react/prop-types */
 import Head from "next/head";
-import { AuthProvider } from "contexts/auth";
-import { ThemeProvider } from "contexts/theme";
-import { Toasty } from "@components/toasty";
-import config from "@config/index";
+import { AuthProvider } from "@/contexts/auth";
+import { ThemeProvider } from "@/contexts/theme";
+import { Toasty } from "@/components/toasty";
+
+import config from "@/config";
 import webConfig from "web.config";
 
-import "@styles/tailwind.css";
-import "@styles/toast.css";
+import "@/styles/tailwind.css";
+import "@/styles/toast.css";
 import "react-toastify/dist/ReactToastify.css";
 
 export function reportWebVitals(metric) {

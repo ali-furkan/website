@@ -3,13 +3,17 @@ import React from "react";
 import { useRouter } from "next/router";
 import { parseCookies } from "nookies";
 import { toast } from "react-toastify";
-import MainLayout from "@layouts/main";
-import { withAuth } from "@lib/withAuth";
-import { editPost } from "@lib/api/edit-post";
-import { EditProvider } from "contexts/edit";
-import { EditContainer } from "containers/dashboard/edit";
-import { Container } from "@components/container";
-import { StorageDomain } from "web.config";
+
+import config from "@/config";
+
+import { withAuth } from "@/lib/withAuth";
+import { editPost } from "@/lib/api/edit-post";
+
+import { EditProvider } from "@/contexts/edit";
+
+import MainLayout from "@/layouts/main";
+import { EditContainer } from "@/containers/dashboard/edit";
+import { Container } from "@/components/container";
 
 const DashboardPage = ({ data }) => {
     const [err, setErr] = React.useState("");
@@ -72,7 +76,7 @@ export async function getServerSideProps(ctx) {
         if (!["blogs", "projects"].includes(type))
             throw new Error("Type param invalid");
         const res = await fetch(
-            `https://${StorageDomain}/${type}-metas/${encodeURIComponent(id)}`,
+            `${config.baseUrl}/${type}-metas/${encodeURIComponent(id)}`,
             {
                 headers: {
                     Authorization: cookies.token,
@@ -85,7 +89,7 @@ export async function getServerSideProps(ctx) {
         const data = await res.json();
 
         const resCnt = await fetch(
-            `https://${StorageDomain}/${type}/${encodeURIComponent(id)}`,
+            `${config.baseUrl}/${type}/${encodeURIComponent(id)}`,
             {
                 headers: {
                     Authorization: cookies.token,

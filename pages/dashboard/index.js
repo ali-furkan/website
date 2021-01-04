@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
-import MainLayout from "@layouts/main";
-import { withAuth } from "@lib/withAuth";
-import { DashboardMain } from "containers/dashboard/main";
 import { parseCookies } from "nookies";
-import { StorageDomain } from "web.config";
+import config from "@/config";
+import { withAuth } from "@/lib/withAuth";
+import MainLayout from "@/layouts/main";
+import { DashboardMain } from "@/containers/dashboard/main";
 
 const DashboardPage = ({ logs, projects, blogs }) => {
     return (
@@ -26,7 +26,7 @@ export async function getServerSideProps(ctx) {
 
     const getMetas = async (path) => {
         try {
-            const res = await fetch(`https://${StorageDomain}/${path}`, {
+            const res = await fetch(`${config.baseUrl}/${path}`, {
                 headers: {
                     Authorization: `Bearer ${cookies["token"]}`,
                 },

@@ -14,37 +14,37 @@ const HomePage = () => {
     }, [theme]);
 
     return (
-        <HomeContainer
-            title={Config.HomePage.title}
-            subTitle={Config.HomePage.subTitle}
-            tags={Config.HomePage.tags}
-            links={[
-                {
-                    href: "/github",
-                    color,
-                    Icon: dynamic(() =>
-                        import("react-ionicons/lib/LogoGithub")
-                    ),
-                },
-                {
-                    href: "/twitter",
-                    color,
-                    Icon: dynamic(() =>
-                        import("react-ionicons/lib/LogoTwitter")
-                    ),
-                },
-                {
-                    href: "/dribbble",
-                    color,
-                    Icon: dynamic(() =>
-                        import("react-ionicons/lib/LogoDribbble")
-                    ),
-                },
-            ]}
-        />
+        <MessageLayout>
+            <HomeContainer
+                title={Config.HomePage.title}
+                subTitle={Config.HomePage.subTitle}
+                tags={Config.HomePage.tags}
+                links={[
+                    {
+                        href: "/github",
+                        color,
+                        Icon: dynamic(() =>
+                            import("react-ionicons/lib/LogoGithub")
+                        ),
+                    },
+                    {
+                        href: "/twitter",
+                        color,
+                        Icon: dynamic(() =>
+                            import("react-ionicons/lib/LogoTwitter")
+                        ),
+                    },
+                    {
+                        href: "/dribbble",
+                        color,
+                        Icon: dynamic(() =>
+                            import("react-ionicons/lib/LogoDribbble")
+                        ),
+                    },
+                ]}
+            />
+        </MessageLayout>
     );
 };
 
-export default MessageLayout({
-    Description: HomePage,
-});
+export default HomePage;

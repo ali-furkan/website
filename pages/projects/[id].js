@@ -21,7 +21,11 @@ const ProjectPage = ({ source }) => {
     if (!source) return <h1>Page not found</h1>;
     const content = hydrate(source, { components });
 
-    return <Article>{content}</Article>;
+    return (
+        <MainLayout>
+            <Article>{content}</Article>
+        </MainLayout>
+    );
 };
 
 export const getStaticPaths = async () => {
@@ -80,4 +84,4 @@ export const getStaticProps = async ({ params }) => {
     }
 };
 
-export default MainLayout(ProjectPage);
+export default ProjectPage;

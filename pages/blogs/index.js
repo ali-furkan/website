@@ -7,17 +7,19 @@ import config from "@config/index";
 
 const ProjectPage = ({ blogs }) => {
     return (
-        <ListPage
-            title={"Blogs"}
-            content={
-                "Subscribe to get the new my learning, experiences, interesting articles."
-            }
-            cards={blogs}
-        >
-            {/* <Input placeholder="joe@email.com">
-                <Button>Subscribe</Button>
-            </Input> */}
-        </ListPage>
+        <MainLayout>
+            <ListPage
+                title={"Blogs"}
+                content={
+                    "Subscribe to get the new my learning, experiences, interesting articles."
+                }
+                cards={blogs}
+            >
+                {/* <Input placeholder="joe@email.com">
+                    <Button>Subscribe</Button>
+                </Input> */}
+            </ListPage>
+        </MainLayout>
     );
 };
 
@@ -61,4 +63,4 @@ export async function getStaticProps() {
     }
 }
 
-export default MainLayout(ProjectPage);
+export default ProjectPage;

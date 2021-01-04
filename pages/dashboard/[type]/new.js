@@ -41,19 +41,21 @@ const PostCreatePage = ({ type }) => {
     };
 
     return (
-        <Container>
-            <EditProvider>
-                <EditContainer
-                    onSubmit={onSubmit}
-                    value={{ type }}
-                    error={err}
-                />
-            </EditProvider>
-        </Container>
+        <MainLayout>
+            <Container>
+                <EditProvider>
+                    <EditContainer
+                        onSubmit={onSubmit}
+                        value={{ type }}
+                        error={err}
+                    />
+                </EditProvider>
+            </Container>
+        </MainLayout>
     );
 };
 
-export default MainLayout(PostCreatePage);
+export default PostCreatePage;
 
 export async function getServerSideProps(ctx) {
     const { type } = ctx.params;

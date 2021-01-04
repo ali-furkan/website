@@ -2,13 +2,15 @@ import MessageLayout from "@layouts/message";
 import AboutContainer from "containers/about";
 import Config from "web.config";
 
-function AboutPage() {
+const AboutPage = () => {
     return (
-        <AboutContainer title={Config.AboutPage.title}>
-            {Config.AboutPage.content}
-        </AboutContainer>
+        <MessageLayout>
+            <AboutContainer title={Config.AboutPage.title}>
+                {Config.AboutPage.content}
+            </AboutContainer>
+        </MessageLayout>
     );
-}
+};
 
 export default MessageLayout({
     Description: AboutPage,

@@ -6,7 +6,11 @@ import { parseCookies } from "nookies";
 import { StorageDomain } from "web.config";
 
 const DashboardPage = ({ logs, projects, blogs }) => {
-    return <DashboardMain logs={logs} projects={projects} blogs={blogs} />;
+    return (
+        <MainLayout>
+            <DashboardMain logs={logs} projects={projects} blogs={blogs} />
+        </MainLayout>
+    );
 };
 
 export async function getServerSideProps(ctx) {
@@ -54,4 +58,4 @@ export async function getServerSideProps(ctx) {
     };
 }
 
-export default MainLayout(DashboardPage);
+export default DashboardPage;

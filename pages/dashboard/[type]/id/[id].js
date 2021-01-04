@@ -1,15 +1,15 @@
 /* eslint-disable react/prop-types */
 import React from "react";
-import { Container } from "@components/container";
+import { useRouter } from "next/router";
+import { parseCookies } from "nookies";
+import { toast } from "react-toastify";
 import MainLayout from "@layouts/main";
 import { withAuth } from "@lib/withAuth";
-import { parseCookies } from "nookies";
-import { StorageDomain } from "web.config";
+import { editPost } from "@lib/api/edit-post";
 import { EditProvider } from "contexts/edit";
 import { EditContainer } from "containers/dashboard/edit";
-import { editPost } from "@lib/api/edit-post";
-import { useRouter } from "next/router";
-import { toast } from "react-toastify";
+import { Container } from "@components/container";
+import { StorageDomain } from "web.config";
 
 const DashboardPage = ({ data }) => {
     const [err, setErr] = React.useState("");
@@ -42,17 +42,15 @@ const DashboardPage = ({ data }) => {
 
     return (
         <MainLayout>
-            <EditProvider>
-                <Container>
-                    <EditProvider>
-                        <EditContainer
-                            onSubmit={onSubmit}
-                            value={data}
-                            error={err}
-                        />
-                    </EditProvider>
-                </Container>
-            </EditProvider>
+            <Container>
+                <EditProvider>
+                    <EditContainer
+                        onSubmit={onSubmit}
+                        value={data}
+                        error={err}
+                    />
+                </EditProvider>
+            </Container>
         </MainLayout>
     );
 };

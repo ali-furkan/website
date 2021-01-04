@@ -5,7 +5,7 @@ import style from "./about.module.css";
 const AboutContainer = ({ title, children }) => {
     return (
         <article className={style.hero}>
-            <Text h1 b className={style.title}>
+            <Text h1 b>
                 {title}
             </Text>
             <Text size={"lg"}>{children}</Text>

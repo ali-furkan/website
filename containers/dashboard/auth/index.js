@@ -1,9 +1,9 @@
 import React from "react";
-import Input from "@components/input";
-import { Text } from "@components/text";
-import { Button } from "@components/button";
 import { useRouter } from "next/router";
-import { AuthContext } from "contexts/auth";
+import { AuthContext } from "@/contexts/auth";
+import Input from "@/components/input";
+import { Text } from "@/components/text";
+import { Button } from "@/components/button";
 import style from "./auth.module.css";
 
 export const DashboardAuth = () => {

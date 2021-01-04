@@ -2,19 +2,19 @@ import React from "react";
 import Proptypes from "prop-types";
 import dynamic from "next/dynamic";
 
-import { EditContext } from "contexts/edit";
+import { EditContext } from "@/contexts/edit";
 
-import { Text } from "@components/text";
-import { Button } from "@components/button";
-import Input from "@components/input";
-import { InputTag } from "@components/input-tag";
-
-import style from "./edit.module.css";
+import { Text } from "@/components/text";
+import { Button } from "@/components/button";
+import Input from "@/components/input";
+import { InputTag } from "@/components/input-tag";
 
 const SimpleMde = dynamic(() => import("react-simplemde-editor"), {
     ssr: false,
 });
+
 import "easymde/dist/easymde.min.css";
+import style from "./edit.module.css";
 
 export const EditContainer = ({ value, onSubmit, error }) => {
     const editCtx = React.useContext(EditContext);

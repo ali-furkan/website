@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Input from "@components/input";
-import { Tag } from "@components/tag";
-import { EditContext } from "contexts/edit";
+import { EditContext } from "@/contexts/edit";
+import Input from "@/components/input";
+import { Tag } from "@/components/tag";
+import { Text } from "@/components/text";
 import style from "./tag-input.module.css";
-import { Text } from "@components/text";
 
 export const InputTag = ({ label }) => {
     const { tags, changeTags } = React.useContext(EditContext);

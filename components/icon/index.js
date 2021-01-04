@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import style from "./style.module.css";
 
 /**
- *
+ * Icon Button
  * @param {{ href: string; Icon:import("react").Component; className: string; size: string;}} param0
  */
 export function IconButton({ href, Icon, className, size, ...props }) {

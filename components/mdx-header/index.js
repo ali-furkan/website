@@ -3,21 +3,17 @@ import propTypes from "prop-types";
 import Head from "next/head";
 import dynamic from "next/dynamic";
 
-import { fmtDate } from "@lib/fmt";
-import { useTheme } from "@lib/theme";
+import { fmtDate } from "@/lib/fmt";
+import { useTheme } from "@/lib/theme";
 
-import { Tag } from "@components/tag";
-import { Text } from "@components/text";
-import { IconButton } from "@components/icon";
+import { Tag } from "@/components/tag";
+import { Text } from "@/components/text";
+import { IconButton } from "@/components/icon";
 
 import style from "./page.module.css";
 
-const TwitterIco = dynamic(() => import("react-ionicons/lib/LogoTwitter"), {
-    ssr: true,
-});
-const LinkedinIco = dynamic(() => import("react-ionicons/lib/LogoLinkedin"), {
-    srr: true,
-});
+const TwitterIco = dynamic(() => import("react-ionicons/lib/LogoTwitter"));
+const LinkedinIco = dynamic(() => import("react-ionicons/lib/LogoLinkedin"));
 const FacebookIco = dynamic(() => import("react-ionicons/lib/LogoFacebook"));
 const CopyIco = dynamic(() => import("react-ionicons/lib/MdCopy"));
 const DateIco = dynamic(() => import("react-ionicons/lib/MdCalendar"));

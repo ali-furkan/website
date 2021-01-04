@@ -1,6 +1,6 @@
 import React from "react";
-import { ToastContainer, toast as useToast } from "react-toastify";
 import { useRouter } from "next/router";
+import { ToastContainer, toast as useToast } from "react-toastify";
 
 export const Toasty = () => {
     const router = useRouter();
@@ -20,8 +20,6 @@ export const Toasty = () => {
                 return "info";
             return str;
         };
-
-        console.log("NAME");
 
         const type = getType(toast);
 

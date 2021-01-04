@@ -9,8 +9,6 @@ const DashboardPage = ({ logs, projects, blogs }) => {
     return <DashboardMain logs={logs} projects={projects} blogs={blogs} />;
 };
 
-export default MainLayout(DashboardPage);
-
 export async function getServerSideProps(ctx) {
     if ((await withAuth(ctx)) !== true)
         return {
@@ -55,3 +53,5 @@ export async function getServerSideProps(ctx) {
         },
     };
 }
+
+export default MainLayout(DashboardPage);

@@ -5,11 +5,13 @@ import config from "@config/index";
 
 const ProjectListPage = ({ projects }) => {
     return (
-        <ListPage
-            title={"Projects"}
-            content={"My projects and experiences"}
-            cards={projects}
-        />
+        <MainLayout>
+            <ListPage
+                title={"Projects"}
+                content={"My projects and experiences"}
+                cards={projects}
+            />
+        </MainLayout>
     );
 };
 
@@ -51,4 +53,4 @@ export async function getStaticProps() {
     }
 }
 
-export default MainLayout(ProjectListPage);
+export default ProjectListPage;

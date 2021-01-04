@@ -41,21 +41,21 @@ const DashboardPage = ({ data }) => {
     };
 
     return (
-        <EditProvider>
-            <Container>
-                <EditProvider>
-                    <EditContainer
-                        onSubmit={onSubmit}
-                        value={data}
-                        error={err}
-                    />
-                </EditProvider>
-            </Container>
-        </EditProvider>
+        <MainLayout>
+            <EditProvider>
+                <Container>
+                    <EditProvider>
+                        <EditContainer
+                            onSubmit={onSubmit}
+                            value={data}
+                            error={err}
+                        />
+                    </EditProvider>
+                </Container>
+            </EditProvider>
+        </MainLayout>
     );
 };
-
-export default MainLayout(DashboardPage);
 
 export async function getServerSideProps(ctx) {
     if ((await withAuth(ctx)) !== true)
@@ -119,3 +119,5 @@ export async function getServerSideProps(ctx) {
         };
     }
 }
+
+export default DashboardPage;

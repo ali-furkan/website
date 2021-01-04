@@ -3,10 +3,11 @@ import { parseCookies, destroyCookie } from "nookies";
 import { DashboardAuth } from "containers/dashboard/auth";
 import { StorageDomain } from "web.config";
 
-export default MessageLayout({
-    title: "Authentication",
-    Description: DashboardAuth,
-});
+const DashboardAuthPage = () => (
+    <MessageLayout title="Authentication">
+        <DashboardAuth />
+    </MessageLayout>
+);
 
 export async function getServerSideProps(ctx) {
     const cookies = parseCookies(ctx);
@@ -36,3 +37,5 @@ export async function getServerSideProps(ctx) {
         };
     }
 }
+
+export default DashboardAuthPage;

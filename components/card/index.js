@@ -1,9 +1,9 @@
 import PropTypes, { object } from "prop-types";
 import Link from "next/link";
-import { Text } from "@components/text";
+import { Text } from "@/components/text";
+import { Skeleton } from "@/components/skeleton";
 import style from "./card.module.css";
 import styleRow from "./card-row.module.css";
-import { Skeleton } from "@components/skeleton";
 
 export const CardFooter = ({ children }) => (
     <footer className="border-t-2 border-primary-200 p-5">{children}</footer>

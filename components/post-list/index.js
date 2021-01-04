@@ -1,9 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Text } from "@components/text";
 import Link from "next/link";
-import { Button } from "@components/button";
-import { Card } from "@components/card";
+import { Text } from "@/components/text";
+import { Button } from "@/components/button";
+import { Card } from "@/components/card";
 import style from "./post-list.module.css";
 
 export function PostList({ title, list }) {

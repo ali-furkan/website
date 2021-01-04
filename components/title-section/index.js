@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { Text } from "@components/text";
+import { Text } from "@/components/text";
 import style from "./section.module.css";
 
 const TitleSection = ({ children, title, content }) => {

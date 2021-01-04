@@ -2,8 +2,8 @@ import PropTypes from "prop-types";
 import style from "./input.module.css";
 
 /**
- * Input
- * @param {import("react").ComponentProps<"input">} param0
+ * Input Component
+ * @param {import("react").ComponentProps<"input">} props
  */
 const Input = ({
     label,

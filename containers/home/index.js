@@ -1,9 +1,9 @@
 import PropTypes from "prop-types";
-import { IconButton } from "@components/icon";
-import { Tag } from "@components/tag";
-import { Text } from "@components/text";
+import { useTheme } from "@/lib/theme";
+import { IconButton } from "@/components/icon";
+import { Tag } from "@/components/tag";
+import { Text } from "@/components/text";
 import style from "./home.module.css";
-import { useTheme } from "@lib/theme";
 
 const HomeContainer = ({ title, subTitle, tags, links }) => {
     const [theme] = useTheme();

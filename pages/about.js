@@ -12,6 +12,4 @@ const AboutPage = () => {
     );
 };
 
-export default MessageLayout({
-    Description: AboutPage,
-});
+export default AboutPage

@@ -55,8 +55,6 @@ const PostCreatePage = ({ type }) => {
     );
 };
 
-export default PostCreatePage;
-
 export async function getServerSideProps(ctx) {
     const { type } = ctx.params;
 
@@ -76,3 +74,5 @@ export async function getServerSideProps(ctx) {
 
     return { props: { type } };
 }
+
+export default PostCreatePage;

@@ -32,7 +32,7 @@ const MessageLayout = ({ title, description, children, options }) => {
             {options.navbar ? <LazyNavbar /> : null}
             <main className={style.main}>
                 <div className={style.wrapper}>
-                    {title ? <h1 className={style.title}>{title}</h1> : null}
+                    {title && <h1 className={style.title}>{title}</h1>}
                     {children ?? <p>{description}</p>}
                 </div>
             </main>
@@ -46,8 +46,6 @@ const DEF_CONFIG = {
 };
 
 MessageLayout.defaultProps = {
-    title: "Lorem Ipsum",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     options: DEF_CONFIG,
 };
 

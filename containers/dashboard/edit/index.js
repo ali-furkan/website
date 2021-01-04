@@ -1,5 +1,5 @@
 import React from "react";
-import Proptypes from "prop-types";
+import PropTypes from "prop-types";
 import dynamic from "next/dynamic";
 
 import { EditContext } from "@/contexts/edit";
@@ -106,7 +106,7 @@ EditContainer.defaultProps = {
 };
 
 EditContainer.propTypes = {
-    value: Proptypes.object,
-    onSubmit: Proptypes.func,
-    error: Proptypes.string,
+    value: PropTypes.object,
+    onSubmit: PropTypes.func,
+    error: PropTypes.string,
 };

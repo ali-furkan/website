@@ -1,4 +1,4 @@
-import PropTypes, { object } from "prop-types";
+import PropTypes from "prop-types";
 import Link from "next/link";
 import { Text } from "@/components/text";
 import { Skeleton } from "@/components/skeleton";
@@ -16,7 +16,7 @@ CardFooter.propTypes = {
 const propTypes = {
     image: PropTypes.string,
     title: PropTypes.string,
-    tags: PropTypes.arrayOf(object),
+    tags: PropTypes.arrayOf(PropTypes.object),
     date: PropTypes.string,
     footer: PropTypes.any,
 };

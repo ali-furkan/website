@@ -19,7 +19,7 @@ const MessageLayout = ({ title, description, children, options }) => {
             : DEF_CONFIG;
     const LazyNavbar = () => {
         const Navbar = dynamic(() =>
-            import("@components/navbar").then(({ Navbar }) => Navbar)
+            import("@/components/navbar").then(({ Navbar }) => Navbar)
         );
         return (
             <header className={style.header}>

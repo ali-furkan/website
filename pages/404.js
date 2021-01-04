@@ -1,4 +1,4 @@
-import MessageLayout from "@layouts/message";
+import MessageLayout from "@/layouts/message";
 
 const NotFoundPage = () => {
     return (

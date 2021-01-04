@@ -49,9 +49,6 @@ export const Navbar = ({ links }) => {
 
                 <div className={style.navs}>
                     <NavLinks />
-                    <Link href={"/contact"}>
-                        <Button text="Contact" />
-                    </Link>
                 </div>
                 <div
                     onClick={() => setOpen(!isOpen)}

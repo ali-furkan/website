@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 
 import config from "@/config";
 
-import { withAuth } from "@/lib/withAuth";
+import { withAuth } from "@/lib/with-auth";
 import { editPost } from "@/lib/api/edit-post";
 
 import { EditProvider } from "@/contexts/edit";

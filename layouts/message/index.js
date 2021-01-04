@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
+import dynamic from "next/dynamic";
 import Config from "web.config";
 import style from "./layout.module.css";
-import dynamic from "next/dynamic";
 
 /**
  * Message Layout
@@ -12,7 +12,7 @@ import dynamic from "next/dynamic";
  *  options: { navbar:boolean,links:{[props:string]:any}
  * } }} param0
  */
-const MessageLayout = ({ title, description, Description, options }) => {
+const MessageLayout = ({ title, description, children, options }) => {
     options =
         typeof options === "object"
             ? Object.assign({}, DEF_CONFIG, options)
@@ -27,18 +27,17 @@ const MessageLayout = ({ title, description, Description, options }) => {
             </header>
         );
     };
-    const PageLayout = () => (
+    return (
         <div id={style.app}>
             {options.navbar ? <LazyNavbar /> : null}
             <main className={style.main}>
                 <div className={style.wrapper}>
                     {title ? <h1 className={style.title}>{title}</h1> : null}
-                    {<Description /> ?? <p>{description}</p>}
+                    {children ?? <p>{description}</p>}
                 </div>
             </main>
         </div>
     );
-    return PageLayout;
 };
 
 const DEF_CONFIG = {
@@ -56,6 +55,7 @@ MessageLayout.propTypes = {
     title: PropTypes.string,
     description: PropTypes.any,
     options: PropTypes.object,
+    children: PropTypes.arrayOf(PropTypes.func),
 };
 
 export default MessageLayout;

@@ -1,9 +1,9 @@
 import React from "react";
 import dynamic from "next/dynamic";
-import Config from "web.config";
-import { useTheme } from "@lib/theme";
-import MessageLayout from "@layouts/message";
-import HomeContainer from "containers/home";
+import webConfig from "web.config";
+import { useTheme } from "@/lib/theme";
+import MessageLayout from "@/layouts/message";
+import HomeContainer from "@/containers/home";
 
 const HomePage = () => {
     const [theme] = useTheme();
@@ -14,37 +14,37 @@ const HomePage = () => {
     }, [theme]);
 
     return (
-        <HomeContainer
-            title={Config.HomePage.title}
-            subTitle={Config.HomePage.subTitle}
-            tags={Config.HomePage.tags}
-            links={[
-                {
-                    href: "/github",
-                    color,
-                    Icon: dynamic(() =>
-                        import("react-ionicons/lib/LogoGithub")
-                    ),
-                },
-                {
-                    href: "/twitter",
-                    color,
-                    Icon: dynamic(() =>
-                        import("react-ionicons/lib/LogoTwitter")
-                    ),
-                },
-                {
-                    href: "/dribbble",
-                    color,
-                    Icon: dynamic(() =>
-                        import("react-ionicons/lib/LogoDribbble")
-                    ),
-                },
-            ]}
-        />
+        <MessageLayout>
+            <HomeContainer
+                title={webConfig.HomePage.title}
+                subTitle={webConfig.HomePage.subTitle}
+                tags={webConfig.HomePage.tags}
+                links={[
+                    {
+                        href: "/github",
+                        color,
+                        Icon: dynamic(() =>
+                            import("react-ionicons/lib/LogoGithub")
+                        ),
+                    },
+                    {
+                        href: "/twitter",
+                        color,
+                        Icon: dynamic(() =>
+                            import("react-ionicons/lib/LogoTwitter")
+                        ),
+                    },
+                    {
+                        href: "/dribbble",
+                        color,
+                        Icon: dynamic(() =>
+                            import("react-ionicons/lib/LogoDribbble")
+                        ),
+                    },
+                ]}
+            />
+        </MessageLayout>
     );
 };
 
-export default MessageLayout({
-    Description: HomePage,
-});
+export default HomePage;

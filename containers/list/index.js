@@ -1,10 +1,10 @@
 import PropTypes from "prop-types";
-import TitleSection from "@components/title-section";
-import { Container } from "@components/container";
-import { Card } from "@components/card";
-import { Text } from "@components/text";
+import { fmtDate } from "@/lib/fmt";
+import { Card } from "@/components/card";
+import { Text } from "@/components/text";
+import { Container } from "@/components/container";
+import TitleSection from "@/components/title-section";
 import style from "./list.module.css";
-import { fmtDate } from "@lib/fmt";
 
 const ListContainer = ({ title, content, children, cards }) => {
     return (

@@ -1,23 +1,23 @@
 /* eslint-disable react/prop-types */
-// import { Button } from "@components/button";
-// import Input from "@components/input";
-import MainLayout from "@layouts/main";
-import ListPage from "containers/list";
-import config from "@config/index";
+import ListPage from "@/containers/list";
+import config from "@/config";
+import MainLayout from "@/layouts/main";
 
 const ProjectPage = ({ blogs }) => {
     return (
-        <ListPage
-            title={"Blogs"}
-            content={
-                "Subscribe to get the new my learning, experiences, interesting articles."
-            }
-            cards={blogs}
-        >
-            {/* <Input placeholder="joe@email.com">
-                <Button>Subscribe</Button>
-            </Input> */}
-        </ListPage>
+        <MainLayout>
+            <ListPage
+                title={"Blogs"}
+                content={
+                    "Subscribe to get the new my learning, experiences, interesting articles."
+                }
+                cards={blogs}
+            >
+                {/* <Input placeholder="joe@email.com">
+                    <Button>Subscribe</Button>
+                </Input> */}
+            </ListPage>
+        </MainLayout>
     );
 };
 
@@ -61,4 +61,4 @@ export async function getStaticProps() {
     }
 }
 
-export default MainLayout(ProjectPage);
+export default ProjectPage;

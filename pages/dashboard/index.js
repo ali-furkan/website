@@ -1,15 +1,17 @@
 /* eslint-disable react/prop-types */
-import MainLayout from "@layouts/main";
-import { withAuth } from "@lib/withAuth";
-import { DashboardMain } from "containers/dashboard/main";
 import { parseCookies } from "nookies";
-import { StorageDomain } from "web.config";
+import config from "@/config";
+import { withAuth } from "@/lib/with-auth";
+import MainLayout from "@/layouts/main";
+import { DashboardMain } from "@/containers/dashboard/main";
 
 const DashboardPage = ({ logs, projects, blogs }) => {
-    return <DashboardMain logs={logs} projects={projects} blogs={blogs} />;
+    return (
+        <MainLayout>
+            <DashboardMain logs={logs} projects={projects} blogs={blogs} />
+        </MainLayout>
+    );
 };
-
-export default MainLayout(DashboardPage);
 
 export async function getServerSideProps(ctx) {
     if ((await withAuth(ctx)) !== true)
@@ -24,7 +26,7 @@ export async function getServerSideProps(ctx) {
 
     const getMetas = async (path) => {
         try {
-            const res = await fetch(`https://${StorageDomain}/${path}`, {
+            const res = await fetch(`${config.baseUrl}/${path}`, {
                 headers: {
                     Authorization: `Bearer ${cookies["token"]}`,
                 },
@@ -55,3 +57,5 @@ export async function getServerSideProps(ctx) {
         },
     };
 }
+
+export default DashboardPage;

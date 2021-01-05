@@ -1,15 +1,17 @@
 /* eslint-disable react/prop-types */
-import MainLayout from "@layouts/main";
-import ListPage from "containers/list";
-import config from "@config/index";
+import config from "@/config";
+import MainLayout from "@/layouts/main";
+import ListPage from "@/containers/list";
 
 const ProjectListPage = ({ projects }) => {
     return (
-        <ListPage
-            title={"Projects"}
-            content={"My projects and experiences"}
-            cards={projects}
-        />
+        <MainLayout>
+            <ListPage
+                title={"Projects"}
+                content={"My projects and experiences"}
+                cards={projects}
+            />
+        </MainLayout>
     );
 };
 
@@ -51,4 +53,4 @@ export async function getStaticProps() {
     }
 }
 
-export default MainLayout(ProjectListPage);
+export default ProjectListPage;

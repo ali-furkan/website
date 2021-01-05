@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from "react";
 
-import { useTheme } from "@lib/theme";
+import { useTheme } from "@/lib/theme";
 
 export const ThemeContext = React.createContext("light");
 

@@ -1,5 +1,5 @@
-import styles from "./style.module.css";
 import PropTypes from "prop-types";
+import styles from "./style.module.css";
 
 export const Tag = ({ label, bgColor, textColor, className, ...props }) => {
     return (

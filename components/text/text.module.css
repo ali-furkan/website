@@ -33,6 +33,10 @@
 .xl {
     @apply text-xl;
 }
+.xl-2 {
+    @apply text-2xl;
+}
+
 
 /* Weights */
 .medium {

@@ -1,19 +1,20 @@
-import MessageLayout from "@layouts/message";
 import { parseCookies, destroyCookie } from "nookies";
-import { DashboardAuth } from "containers/dashboard/auth";
-import { StorageDomain } from "web.config";
+import config from "@/config";
+import { DashboardAuth } from "@/containers/dashboard/auth";
+import MessageLayout from "@/layouts/message";
 
-export default MessageLayout({
-    title: "Authentication",
-    Description: DashboardAuth,
-});
+const DashboardAuthPage = () => (
+    <MessageLayout title="Authentication">
+        <DashboardAuth />
+    </MessageLayout>
+);
 
 export async function getServerSideProps(ctx) {
     const cookies = parseCookies(ctx);
 
     try {
         if (cookies["token"]) {
-            const res = await fetch(`https://${StorageDomain}/auth/verify`, {
+            const res = await fetch(`${config.baseUrl}/auth/verify`, {
                 headers: {
                     Authorization: `Bearer ${cookies["token"]}`,
                 },
@@ -36,3 +37,5 @@ export async function getServerSideProps(ctx) {
         };
     }
 }
+
+export default DashboardAuthPage;

@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
-import { Container } from "@components/container";
-import { Text } from "@components/text";
-import { PostList } from "@components/post-list";
+import { Text } from "@/components/text";
+import { Container } from "@/components/container";
+import { PostList } from "@/components/post-list";
 import style from "./dashboard.module.css";
 
 export const DashboardMain = ({ blogs, projects, logs }) => {

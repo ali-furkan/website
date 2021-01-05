@@ -1,14 +1,17 @@
 /* eslint-disable react/prop-types */
 import React from "react";
-import { Container } from "@components/container";
-import MainLayout from "@layouts/main";
-import { withAuth } from "@lib/withAuth";
-import { EditContainer } from "containers/dashboard/edit";
-import { EditProvider } from "contexts/edit";
-import { createPost } from "@lib/api/create-post";
-import { parseCookies } from "nookies";
 import { useRouter } from "next/router";
+import { parseCookies } from "nookies";
 import { toast } from "react-toastify";
+
+import { withAuth } from "@/lib/with-auth";
+import { createPost } from "@/lib/api/create-post";
+
+import { EditProvider } from "@/contexts/edit";
+
+import MainLayout from "@/layouts/main";
+import { Container } from "@/components/container";
+import { EditContainer } from "@/containers/dashboard/edit";
 
 const PostCreatePage = ({ type }) => {
     const [err, setErr] = React.useState("");
@@ -41,19 +44,19 @@ const PostCreatePage = ({ type }) => {
     };
 
     return (
-        <Container>
-            <EditProvider>
-                <EditContainer
-                    onSubmit={onSubmit}
-                    value={{ type }}
-                    error={err}
-                />
-            </EditProvider>
-        </Container>
+        <MainLayout>
+            <Container>
+                <EditProvider>
+                    <EditContainer
+                        onSubmit={onSubmit}
+                        value={{ type }}
+                        error={err}
+                    />
+                </EditProvider>
+            </Container>
+        </MainLayout>
     );
 };
-
-export default MainLayout(PostCreatePage);
 
 export async function getServerSideProps(ctx) {
     const { type } = ctx.params;
@@ -74,3 +77,5 @@ export async function getServerSideProps(ctx) {
 
     return { props: { type } };
 }
+
+export default PostCreatePage;

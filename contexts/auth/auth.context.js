@@ -1,10 +1,9 @@
 /* eslint-disable react/prop-types */
 import React from "react";
 import { setCookie } from "nookies";
+import config from "@/config";
 import { ACTION } from "./auth.constants";
 import { authReducer } from "./auth.reducer";
-import { StorageDomain } from "web.config";
-import config from "@config/index";
 
 export const AuthContext = React.createContext();
 
@@ -15,8 +14,7 @@ export const AuthProvider = ({ children }) => {
     const authContext = Object.assign({}, state, {
         signIn: async ({ token }) => {
             try {
-                const baseUrl = `https://${StorageDomain}`;
-                const res = await fetch(baseUrl + "/auth/verify", {
+                const res = await fetch(config.baseUrl + "/auth/verify", {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },

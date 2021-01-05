@@ -1,15 +1,15 @@
-import MessageLayout from "@layouts/message";
-import AboutContainer from "containers/about";
-import Config from "web.config";
+import MessageLayout from "@/layouts/message";
+import AboutContainer from "@/containers/about";
+import webConfig from "web.config";
 
-function AboutPage() {
+const AboutPage = () => {
     return (
-        <AboutContainer title={Config.AboutPage.title}>
-            {Config.AboutPage.content}
-        </AboutContainer>
+        <MessageLayout>
+            <AboutContainer title={webConfig.AboutPage.title}>
+                {webConfig.AboutPage.content}
+            </AboutContainer>
+        </MessageLayout>
     );
-}
+};
 
-export default MessageLayout({
-    Description: AboutPage,
-});
+export default AboutPage;

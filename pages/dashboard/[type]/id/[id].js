@@ -1,15 +1,19 @@
 /* eslint-disable react/prop-types */
 import React from "react";
-import { Container } from "@components/container";
-import MainLayout from "@layouts/main";
-import { withAuth } from "@lib/withAuth";
-import { parseCookies } from "nookies";
-import { StorageDomain } from "web.config";
-import { EditProvider } from "contexts/edit";
-import { EditContainer } from "containers/dashboard/edit";
-import { editPost } from "@lib/api/edit-post";
 import { useRouter } from "next/router";
+import { parseCookies } from "nookies";
 import { toast } from "react-toastify";
+
+import config from "@/config";
+
+import { withAuth } from "@/lib/with-auth";
+import { editPost } from "@/lib/api/edit-post";
+
+import { EditProvider } from "@/contexts/edit";
+
+import MainLayout from "@/layouts/main";
+import { EditContainer } from "@/containers/dashboard/edit";
+import { Container } from "@/components/container";
 
 const DashboardPage = ({ data }) => {
     const [err, setErr] = React.useState("");
@@ -41,7 +45,7 @@ const DashboardPage = ({ data }) => {
     };
 
     return (
-        <EditProvider>
+        <MainLayout>
             <Container>
                 <EditProvider>
                     <EditContainer
@@ -51,11 +55,9 @@ const DashboardPage = ({ data }) => {
                     />
                 </EditProvider>
             </Container>
-        </EditProvider>
+        </MainLayout>
     );
 };
-
-export default MainLayout(DashboardPage);
 
 export async function getServerSideProps(ctx) {
     if ((await withAuth(ctx)) !== true)
@@ -74,7 +76,7 @@ export async function getServerSideProps(ctx) {
         if (!["blogs", "projects"].includes(type))
             throw new Error("Type param invalid");
         const res = await fetch(
-            `https://${StorageDomain}/${type}-metas/${encodeURIComponent(id)}`,
+            `${config.baseUrl}/${type}-metas/${encodeURIComponent(id)}`,
             {
                 headers: {
                     Authorization: cookies.token,
@@ -87,7 +89,7 @@ export async function getServerSideProps(ctx) {
         const data = await res.json();
 
         const resCnt = await fetch(
-            `https://${StorageDomain}/${type}/${encodeURIComponent(id)}`,
+            `${config.baseUrl}/${type}/${encodeURIComponent(id)}`,
             {
                 headers: {
                     Authorization: cookies.token,
@@ -119,3 +121,5 @@ export async function getServerSideProps(ctx) {
         };
     }
 }
+
+export default DashboardPage;

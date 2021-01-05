@@ -1,18 +1,21 @@
-import { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "next/link";
-import Config from "web.config";
-import { Button } from "@components/button";
-import { useTheme } from "@lib/theme";
+
+import webConfig from "web.config";
+import { useTheme } from "@/lib/theme";
+
+import { Button } from "@/components/button";
+
 import style from "./navbar.module.css";
 
 const MenuIcon = dynamic(() => import("react-ionicons/lib/MdMenu"));
 const CloseIcon = dynamic(() => import("react-ionicons/lib/MdClose"));
 
 export const Navbar = ({ links }) => {
-    const [isOpen, setOpen] = useState(false);
+    const [isOpen, setOpen] = React.useState(false);
     const [theme] = useTheme();
     const isDark = theme === "dark";
 
@@ -36,7 +39,9 @@ export const Navbar = ({ links }) => {
                         <Image
                             width={64}
                             height={64}
-                            src={Config.Navbar.logo[isDark ? "dark" : "light"]}
+                            src={
+                                webConfig.Navbar.logo[isDark ? "dark" : "light"]
+                            }
                             alt="logo"
                         />
                     </a>
@@ -44,9 +49,6 @@ export const Navbar = ({ links }) => {
 
                 <div className={style.navs}>
                     <NavLinks />
-                    <Link href={"/contact"}>
-                        <Button text="Contact" />
-                    </Link>
                 </div>
                 <div
                     onClick={() => setOpen(!isOpen)}

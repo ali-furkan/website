@@ -1,35 +1,35 @@
 .default {
-    @apply rounded-md bg-primary-400 animate-pulse;
+	@apply rounded-md bg-primary-400 animate-pulse;
 }
 
 .text {
-    @apply h-8 w-64;
+	@apply h-8 w-64;
 }
 
 .img-sm {
-    @apply h-12 w-12;
+	@apply h-12 w-12;
 }
 
 .img-md {
-    @apply h-16 w-16;
+	@apply h-16 w-16;
 }
 
 .img-lg {
-    @apply h-20 w-20;
+	@apply h-20 w-20;
 }
 
 .img-xl {
-    @apply h-24 w-24;
+	@apply h-24 w-24;
 }
 
 .img-2xl {
-    @apply h-32 w-32;
+	@apply h-32 w-32;
 }
 
 .img-3xl {
-    @apply h-40 w-40;
+	@apply h-40 w-40;
 }
 
 .img-3xl {
-    @apply h-48 w-48;
+	@apply h-48 w-48;
 }

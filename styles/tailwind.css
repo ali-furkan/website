@@ -1,13 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Redressed&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;600;700;800;900&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 #__next {
-    min-height: 100vh;
+	min-height: 100vh;
 }
 
 ::selection {
-    background-color: #F81CE5;
-    @apply text-white
+	background-color: #f81ce5;
+	@apply text-white;
 }

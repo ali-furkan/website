@@ -34,54 +34,52 @@ import { EditReducer } from "./edit.reducer";
 export const EditContext = React.createContext();
 
 export function EditProvider({ children }) {
-    const [state, dispatch] = React.useReducer(EditReducer, {
-        title: "",
-        description: "",
-        content: "",
-        tags: "",
-        image: "",
-        prevData: {},
-    });
+	const [state, dispatch] = React.useReducer(EditReducer, {
+		title: "",
+		description: "",
+		content: "",
+		tags: "",
+		image: "",
+		prevData: {},
+	});
 
-    const value = Object.assign({}, state, {
-        set: (state) =>
-            dispatch({
-                type: ACTION.SET_ALL,
-                value: state,
-            }),
-        setType: (value) =>
-            dispatch({
-                type: ACTION.SET_TYPE,
-                value,
-            }),
-        changeTitle: (value) =>
-            dispatch({
-                type: ACTION.CHANGE_TITLE,
-                value,
-            }),
-        changeDescription: (value) =>
-            dispatch({
-                type: ACTION.CHANGE_DESCRIPTION,
-                value,
-            }),
-        changeContent: (value) =>
-            dispatch({
-                type: ACTION.CHANGE_CONTENT,
-                value,
-            }),
-        changeTags: (value) =>
-            dispatch({
-                type: ACTION.CHANGE_TAGS,
-                value,
-            }),
-        changeImage: (value) =>
-            dispatch({
-                type: ACTION.CHANGE_IMAGE,
-                value,
-            }),
-    });
+	const value = Object.assign({}, state, {
+		set: (state) =>
+			dispatch({
+				type: ACTION.SET_ALL,
+				value: state,
+			}),
+		setType: (value) =>
+			dispatch({
+				type: ACTION.SET_TYPE,
+				value,
+			}),
+		changeTitle: (value) =>
+			dispatch({
+				type: ACTION.CHANGE_TITLE,
+				value,
+			}),
+		changeDescription: (value) =>
+			dispatch({
+				type: ACTION.CHANGE_DESCRIPTION,
+				value,
+			}),
+		changeContent: (value) =>
+			dispatch({
+				type: ACTION.CHANGE_CONTENT,
+				value,
+			}),
+		changeTags: (value) =>
+			dispatch({
+				type: ACTION.CHANGE_TAGS,
+				value,
+			}),
+		changeImage: (value) =>
+			dispatch({
+				type: ACTION.CHANGE_IMAGE,
+				value,
+			}),
+	});
 
-    return (
-        <EditContext.Provider value={value}>{children}</EditContext.Provider>
-    );
+	return <EditContext.Provider value={value}>{children}</EditContext.Provider>;
 }

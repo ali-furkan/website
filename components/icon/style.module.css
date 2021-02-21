@@ -1,8 +1,8 @@
 .icon:hover {
-    transform: translateY(-2px);
-    @apply opacity-75
+	transform: translateY(-2px);
+	@apply opacity-75;
 }
 
 .icon {
-    @apply duration-200 ease-in transition-all mx-2 cursor-pointer
+	@apply duration-200 ease-in transition-all mx-2 cursor-pointer;
 }

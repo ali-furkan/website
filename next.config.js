@@ -3,10 +3,18 @@ const configuration = require("./web.config");
 module.exports = {
     cssModules: true,
     images: {
-        domains: [configuration.StorageDomain],
+        domains: [configuration.storagedomain],
+    },
+    webpack(config) {
+        config.module.rules.push({
+            test: /\.svg$/,
+            use: ["@svgr/webpack"],
+        });
+
+        return config;
     },
     async redirects() {
-        const socialLinks = Object.entries(configuration.SocialLinks).map(
+        const socialLinks = Object.entries(configuration.sociallinks).map(
             ([k, v]) => ({
                 source: `/${k}`,
                 destination: v,
@@ -28,7 +36,7 @@ module.exports = {
             },
             {
                 source: "/i/:image",
-                destination: `https://${configuration.StorageDomain}/i/:image`,
+                destination: `https://${configuration.storagedomain}/i/:image`,
                 permanent: false,
             },
         ];

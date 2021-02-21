@@ -1,50 +1,57 @@
 /* Based Styles */
 .h1 {
-    @apply text-6xl;
+	@apply text-6xl;
 }
 .h2 {
-    @apply text-4xl;
+	@apply text-4xl;
 }
 .h3 {
-    @apply text-2xl;
+	@apply text-2xl;
 }
 .h4 {
-    @apply text-xl;
+	@apply text-xl;
 }
 
 .text-italic {
-    @apply italic;
+	@apply italic;
 }
 
 /* Sizes */
 
-.xs {
-    @apply text-xs;
+.size-xs {
+	@apply text-xs !important;
 }
-.sm,.small {
-    @apply text-sm;
+.size-sm,
+.size-small {
+	@apply text-sm !important;
 }
-.base,.default {
-    @apply text-base;
+.size-base,
+.size-default {
+	@apply text-base !important;
 }
-.lg {
-    @apply text-lg;
+.size-lg {
+	@apply text-lg !important;
 }
-.xl {
-    @apply text-xl;
+.size-xl {
+	@apply text-xl !important;
 }
-.xl-2 {
-    @apply text-2xl;
+.size-2xl {
+	@apply text-2xl !important;
 }
-
+.size-4xl {
+	@apply text-4xl !important;
+}
+.size-6xl {
+	@apply text-6xl !important;
+}
 
 /* Weights */
 .medium {
-    @apply font-medium;
+	@apply font-medium;
 }
 .bold {
-    @apply font-bold;
+	@apply font-bold;
 }
 .black {
-    @apply font-black;
+	@apply font-black;
 }

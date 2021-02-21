@@ -24,7 +24,7 @@ module.exports = {
     },
     theme: {
         fontFamily: {
-            display: ["Inter", "sans-serif"],
+            sans: ["Inter", "sans-serif"],
         },
         extend: {
             zIndex: {

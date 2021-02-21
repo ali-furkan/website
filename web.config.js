@@ -1,5 +1,5 @@
 module.exports = {
-    Meta: {
+    meta: {
         title: "Ali Furkan's Portfolio",
         keywords: "Ali Furkan, Portfolio, Github, React, Nest, Typescript",
         description:
@@ -8,22 +8,18 @@ module.exports = {
         image: "/assets/banner.png",
         color: "#4F2BDF",
     },
-    Navbar: {
-        logo: {
-            light: "/assets/logo-black.png",
-            dark: "/assets/logo-white.png",
-        },
+    navbar: {
         links: {
-            About: {
+            about: {
                 text: "About Me",
                 href: "about",
             },
             Github: "github",
         },
     },
-    HomePage: {
-        title: "ali furkan",
-        subTitle: "a developer",
+    homepage: {
+        title: "Ali Furkan",
+        subTitle: "A Developer",
         tags: [
             {
                 label: "Typescript",
@@ -36,16 +32,16 @@ module.exports = {
             },
         ],
     },
-    AboutPage: {
+    aboutpage: {
         title: "About Me",
         content:
-            "I'm Ali Furkan and I'm an 17 years old developer living in Istanbul and I'm trying to improve myself, learn and share what i learn. I love everything about coding in summary. Also I'm developer who care UI design with Modern Javascript. I have been coding stuff for 5 years. I'm currently interested js, ts, golang, c++. I love for Modern Javascript including React, React Native, Mobx, Graphql and Node. Apart from Coding, I like playing gaming, drawing picture and learning something new",
+            "I'm Ali Furkan and I'm an 17 years old developer living in Istanbul and I'm trying to improve myself, learn and share what i learn. I love everything about coding in summary. Also I'm developer who care UI design with Modern Javascript. I have been coding stuff for 5 years. I'm currently interested js, ts, golang, c++. I love for Modern Javascript including React, React Native, Mobx, Graphql and Node. Apart from Coding, I like playing gaming, drawing picture and learning something new.",
     },
-    StorageDomain: "s.alifurkan.co",
-    PublishDomain: "alifurkan.co",
-    SocialLinks: {
+    storagedomain: "s.alifurkan.co",
+    publishdomain: "alifurkan.co",
+    sociallinks: {
         github: "https://github.com/ali-furkqn",
         twitter: "https://twitter.com/AliFurkqn",
-        dribble: "https://dribbble.com/ali_furkan",
+        dribbble: "https://dribbble.com/ali_furkan",
     },
 };

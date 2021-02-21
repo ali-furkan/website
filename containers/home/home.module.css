@@ -1,5 +1,5 @@
 .hero {
-	@apply flex flex-col items-center;
+	@apply flex flex-col text-center max-w-xl items-center;
 }
 
 .name_title {

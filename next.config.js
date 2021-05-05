@@ -1,10 +1,10 @@
 const configuration = require("./web.config");
 
 module.exports = {
-    cssModules: true,
-    images: {
-        domains: [configuration.storagedomain],
+    future: {
+        webpack5: true
     },
+    poweredByHeader: false,
     webpack(config) {
         config.module.rules.push({
             test: /\.svg$/,
@@ -13,6 +13,7 @@ module.exports = {
 
         return config;
     },
+
     async redirects() {
         const socialLinks = Object.entries(configuration.sociallinks).map(
             ([k, v]) => ({
@@ -23,22 +24,17 @@ module.exports = {
         );
 
         return [
-            ...socialLinks,
             {
-                source: "/p/:p",
-                destination: "/projects/:p",
+                source: "/blog",
+                destination: "/posts",
                 permanent: false,
             },
             {
-                source: "/b/:b",
-                destination: "/blogs/:b",
+                source: "/github/:repo",
+                destination: "https://github.com/ali-furkan/:repo",
                 permanent: false,
             },
-            {
-                source: "/i/:image",
-                destination: `https://${configuration.storagedomain}/i/:image`,
-                permanent: false,
-            },
-        ];
-    },
-};
+            ...socialLinks
+        ]
+    }
+}

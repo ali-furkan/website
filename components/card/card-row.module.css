@@ -1,8 +1,0 @@
-.container {
-	@apply rounded-lg flex cursor-pointer overflow-hidden duration-200 ease-out hover:bg-primary-400 hover:bg-opacity-25 my-2 p-5;
-}
-
-.img_wrapper {
-	width: 8rem;
-	@apply h-full object-center;
-}

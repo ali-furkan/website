@@ -1,55 +1,40 @@
-import PropTypes from "prop-types";
-import style from "./input.module.css";
+import {
+	StyledInputBox,
+	StyledInputLabel,
+	StyledInputWrapper,
+	StyledInput
+} from "./input.style"
 
-/**
- * Input Component
- * @param {import("react").ComponentProps<"input">} props
- */
-const Input = ({
+function Input({
 	label,
 	placeholder,
 	value,
 	onChange,
 	children,
 	type,
-	className,
 	...props
-}) => {
+}) {
 	return (
-		<div className={[style.box, className ?? ""].join(" ")} {...props}>
+		<StyledInputBox>
 			{label && (
-				<label className={style.label} htmlFor={label ?? placeholder}>
+				<StyledInputLabel htmlFor={label ?? placeholder}>
 					<p>{label}</p>
-				</label>
+				</StyledInputLabel>
 			)}
-			<div className={style.wrapper}>
-				<input
+			<StyledInputWrapper>
+				<StyledInput
 					id={label}
 					value={value}
 					onChange={onChange}
 					placeholder={placeholder}
 					spellCheck="false"
 					type={type}
+					{...props}
 				/>
 				{children}
-			</div>
-		</div>
-	);
-};
+			</StyledInputWrapper>
+		</StyledInputBox>
+	)
+}
 
-Input.defaultProps = {
-	placeholder: "Hello",
-	children: null,
-};
-
-Input.propTypes = {
-	className: PropTypes.string,
-	label: PropTypes.string,
-	placeholder: PropTypes.string,
-	value: PropTypes.string,
-	onChange: PropTypes.func,
-	children: PropTypes.any,
-	type: PropTypes.string,
-};
-
-export default Input;
+export default Input

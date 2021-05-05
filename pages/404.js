@@ -1,16 +1,17 @@
-import MessageLayout from "@/layouts/message";
+import MainLayout from "@/layouts/main"
+import Button from "@/components/button"
 
-const NotFoundPage = () => {
+function PageNotFound() {
 	return (
-		<MessageLayout title="Page not found">
-			<h2>
-				If you want go back to home page, you can click{" "}
-				<a className="underline" href="/">
-					this link
-				</a>
-			</h2>
-		</MessageLayout>
-	);
-};
+		<MainLayout footer={false}>
+			<h1>Page Not Found</h1>
+			<p>
+				This page doesn't exist. Try heading back home to start from the
+				beginning.
+			</p>
+			<Button href={"/"}>Return Home</Button>
+		</MainLayout>
+	)
+}
 
-export default NotFoundPage;
+export default PageNotFound

@@ -1,6 +1,10 @@
-node_modules
 .next
+public/sitemap.xml
+
 .vscode
-package-lock.json
+
 .env
 .env.*
+
+node_modules
+package-lock.json

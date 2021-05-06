@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://alifurkan.co
+
+# Sitemaps
+Sitemap: https://alifurkan.co/sitemap.xml

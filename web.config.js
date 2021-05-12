@@ -3,7 +3,7 @@ const olds = new Date().getFullYear() - 2003
 module.exports = {
     pages: {
         home: {
-            shortAbout: "Ali Furkan, personal website to showcase my career and development skills. I'm an ${olds} years old developer living in Istanbul and I'm trying to improve myself, learn and share what i learn. I love to develop stuffs with coding in summary",
+            shortAbout: `Ali Furkan, personal website to showcase my career and development skills. I'm an ${olds} years old developer living in Istanbul and I'm trying to improve myself, learn and share what i learn. I love to develop stuffs with coding in summary`,
             works: [
                 {
                     image:

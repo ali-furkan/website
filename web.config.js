@@ -55,7 +55,7 @@ module.exports = {
     sociallinks: {
         github: "https://github.com/ali-furkan",
         twitter: "https://twitter.com/AliFurkqn",
-        discord: "https://discord.gg/MZ3vMsXj",
+        discord: "https://discord.gg/7fRguueUV8",
     },
     navbar: {
         links: [

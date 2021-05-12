@@ -1,4 +1,4 @@
-![repo-banner](assets/repo-banner0.png)
+![repo-banner](/public/assets/banner.png)
 
 # Ali Furkan's Personal Website
 

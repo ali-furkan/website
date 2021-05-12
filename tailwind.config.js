@@ -1,70 +1,66 @@
-const { colors } = require("./config/colors");
-
-const colorWhiteList = Object.entries(colors)
-    .map(([key, val]) => [
-        ...Object.keys(val).map((c) => `bg-${key}-${c}`),
-        ...Object.keys(val).map((c) => `text-${key}-${c}`),
-    ])
-    .reduce((a, b) => [...a, ...b]);
+const { spacing, borderRadius, fontFamily } = require('tailwindcss/defaultTheme');
 
 module.exports = {
-    future: {
-        removeDeprecatedGapUtilities: true,
-        purgeLayersByDefault: true,
-    },
-    experimental: {
-        applyComplexClasses: true,
-    },
-    purge: {
-        content: ["./pages/**/*.js", "./layouts/**/*.js"],
-        options: {
-            tailwind: true,
-            whitelist: [...colorWhiteList, "bg-white", "text-white"],
+  mode: "jit",
+  darkMode: "class",
+  purge: {
+    mode: "all",
+    preserveHtmlElements: false,
+    content: ["./components/**/*.js","./pages/**/*.js"]
+  },
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ["Inter", ...fontFamily.sans]
+      },
+      colors: {
+        gray: {
+          "450": "#777"
+        }
+      },
+      typography: (theme) => ({
+        DEFAULT: {
+          css: {
+            color: theme("colors.gray.700"),
+            "h1,h2,h3,h4": { 'margin-top': spacing[12]  },
+            a: {
+              color: theme("colors.gray.800"),
+              "transtion-property": "all",
+              "transition-duration": ".2s",
+              "&:hover": {
+                color: theme("colors.gray.400")
+              }
+            },
+            code: {
+              color: theme("colors.gray.500"),
+              padding: "0.125rem",
+              margin: "0 0.25rem",
+              "border-radius": borderRadius.md,
+            }
+          }
         },
+        dark: {
+          css: {
+            color: theme("colors.gray.300"),
+            "h1,h2,h3,h4": { color: theme("colors.gray.100") },
+            a: {
+              color: theme("colors.blue.400"),
+              "&:hover": {
+                color: theme("colors.blue.900")
+              }
+            },
+          },
+        }
+      })
     },
-    theme: {
-        fontFamily: {
-            display: ["Inter", "sans-serif"],
-        },
-        extend: {
-            zIndex: {
-                "75": 75,
-                "99": 99,
-                "100": 100,
-                "101": 101,
-            },
-            screens: {
-                light: { raw: "(prefers-color-scheme: light)" },
-                dark: { raw: "(prefers-color-scheme: dark)" },
-            },
-            height: {
-                50: "12.75rem",
-                52: "13.25rem",
-            },
-            boxShadow: {
-                lg: `0 10px 20px -3px ${colors.secondary[500]}40`,
-            },
-            borderRadius: {
-                default: "12px",
-            },
-            colors,
-        },
-    },
-    plugins: [
-        require("@tailwindcss/typography"),
-        ({ addBase, config }) => {
-            addBase({
-                body: {
-                    color: config("theme.colors.primary.500"),
-                    backgroundColor: config("theme.colors.white"),
-                },
-                "@screen dark": {
-                    body: {
-                        color: config("theme.colors.white"),
-                        backgroundColor: config("theme.colors.primary.500"),
-                    },
-                },
-            });
-        },
-    ],
-};
+  },
+  variants: {
+    extend: { 
+      typography: ["dark"],
+      backgroundOpacity: ["active"]
+    }
+  },
+  plugins: [
+    require("@tailwindcss/typography")
+  ],
+}

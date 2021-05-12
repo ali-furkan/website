@@ -1,15 +1,13 @@
-import MessageLayout from "@/layouts/message";
-import AboutContainer from "@/containers/about";
-import webConfig from "web.config";
+import { pages } from "@/web.config"
+import MainLayout from "@/layouts/main"
 
-const AboutPage = () => {
-    return (
-        <MessageLayout>
-            <AboutContainer title={webConfig.AboutPage.title}>
-                {webConfig.AboutPage.content}
-            </AboutContainer>
-        </MessageLayout>
-    );
-};
+function AboutPage() {
+	return (
+		<MainLayout>
+			<h1>About</h1>
+			<p>{pages.about.content} </p>
+		</MainLayout>
+	)
+}
 
-export default AboutPage;
+export default AboutPage

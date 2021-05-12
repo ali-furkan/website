@@ -1,7 +1,0 @@
-.container {
-    @apply max-w-xl text-center mx-auto mt-24 px-8;
-}
-
-.children {
-    @apply mt-8;
-}

@@ -1,19 +1,18 @@
-import PropTypes from "prop-types";
-import webConfig from "web.config";
-import { Navbar } from "@/components/navbar";
-import style from "./layout.module.css";
+import dynamic from "next/dynamic"
+import Footer from "@/components/footer"
 
-const MainLayout = ({ children }) => (
-    <>
-        <header className={[style.header, style.header_opacity].join(" ")}>
-            <Navbar links={webConfig.Navbar.links} />
-        </header>
-        <main className={style.main}>{children}</main>
-    </>
-);
+import { StyledMain } from "./main.style"
 
-MainLayout.propTypes = {
-    children: PropTypes.arrayOf(PropTypes.func),
-};
+const Navbar = dynamic(() => import("@/components/navbar"))
 
-export default MainLayout;
+function MainLayout({ navbar = true, footer = true, children }) {
+	return (
+		<>
+			{navbar && <Navbar />}
+			<StyledMain>{children}</StyledMain>
+			{footer && <Footer />}
+		</>
+	)
+}
+
+export default MainLayout

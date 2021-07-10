@@ -1,12 +1,9 @@
 import { serialize } from "next-mdx-remote/serialize"
 import { MDXRemote } from "next-mdx-remote"
-import { format } from "date-fns"
-import readingTime from "reading-time"
 
+import { mdxSerializeOpts, parseMdxMeta } from "@/lib/mdx"
 import { getPost, getPostSlugs } from "@/lib/posts"
 import PostLayout from "@/layouts/post"
-import mdxPrism from "mdx-prism"
-
 
 export async function getStaticPaths() {
 	const { data, error } = await getPostSlugs()
@@ -36,26 +33,11 @@ export async function getStaticProps(ctx) {
 			revalidate: 10 * 60
 		}
 
-	const mdxSource = await serialize(data.content, {
-		mdxOptions: {
-			remarkPlugins: [
-				require("remark-autolink-headings"),
-				require("remark-slug"),
-				require("remark-emoji"),
-				require("remark-code-titles")
-			],
-			rehypePlugins: [mdxPrism]
-		}
-	})
+	const mdxSource = await serialize(data.content, mdxSerializeOpts)
 
 	return {
 		props: {
-			meta: {
-				...data,
-				date: format(new Date(data.createdAt), "yyyy MMM dd"),
-				readingTime: readingTime(data.content).text,
-				content: null
-			},
+			meta: parseMdxMeta(data),
 			source: mdxSource
 		},
 		revalidate: 5 * 60

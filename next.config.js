@@ -1,10 +1,9 @@
 const configuration = require("./web.config");
 
 module.exports = {
-    future: {
-        webpack5: true
-    },
+    webpack5: true,
     poweredByHeader: false,
+    
     webpack(config) {
         config.module.rules.push({
             test: /\.svg$/,

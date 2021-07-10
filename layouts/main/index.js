@@ -1,9 +1,9 @@
 import dynamic from "next/dynamic"
-import Footer from "@/components/footer"
 
 import { StyledMain } from "./main.style"
 
 const Navbar = dynamic(() => import("@/components/navbar"))
+const Footer = dynamic(() => import("@/components/footer"))
 
 function MainLayout({ navbar = true, footer = true, children }) {
 	return (

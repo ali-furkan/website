@@ -15,7 +15,7 @@ $ npm i // or yarn
 $ npm run dev // yarn dev
 ```
 
-Also duplicates the .env.example as .env and fill it.
+Also duplicate the .env.example as .env and fill it.
 
 ## License
 

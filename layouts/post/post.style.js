@@ -7,7 +7,7 @@ export const StyledPostMain = tw.main`
 `
 
 export const StyledPostArticle = tw.article`
-    prose prose-lg dark:prose-dark
+    prose-lg prose dark:prose-dark
 `
 
 export const StyledPostMeta = styled.div(() => [

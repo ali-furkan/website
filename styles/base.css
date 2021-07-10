@@ -32,6 +32,11 @@ svg {
 	background: #555;
 }
 
+blockquote {
+	@apply rounded
+		bg-gray-100 dark:bg-gray-900;
+}
+
 code[class*="language-"],
 pre[class*="language-"] {
 	color: #ebdbb2;
@@ -57,24 +62,21 @@ pre[class*="language-"]::-moz-selection,
 pre[class*="language-"] ::-moz-selection,
 code[class*="language-"]::-moz-selection,
 code[class*="language-"] ::-moz-selection {
-	@apply 
-		text-white
-		bg-yellow-600
-
+	@apply text-white
+		bg-yellow-600;
 }
 
 pre[class*="language-"]::selection,
 pre[class*="language-"] ::selection,
 code[class*="language-"]::selection,
 code[class*="language-"] ::selection {
-	@apply 
-		text-white
-		bg-yellow-600
+	@apply text-white
+		bg-yellow-600;
 }
 
 /* Code blocks */
 pre[class*="language-"] {
-	@apply p-4 mx-2 overflow-auto;
+	@apply p-4 overflow-auto;
 }
 
 :not(pre) > code[class*="language-"],

@@ -41,7 +41,7 @@ function Changelog({ lastCommit, totalCommits, commits }) {
 				branch of this website. Click{" "}
 				<Link href={"/github/website"}>
 					<a tabIndex="0">here</a>
-				</Link>{" "}
+				</Link>
 				if you want to learn more information about this website
 			</p>
 
@@ -76,25 +76,20 @@ function Changelog({ lastCommit, totalCommits, commits }) {
 			<section>
 				<h2>Commit History</h2>
 				{commits.map((day) => (
-					<>
+					<div key={day.id}>
 						<em>{day.date}</em>
 						<ul>
-							{day.commits.map((commit, i) => (
-								<li key={i}>
+							{day.commits.map((commit) => (
+								<li key={commit.id}>
 									<Link href={commit.url}>
-										<a
-											key={i}
-											tabIndex="0"
-											target="_blank"
-											rel="noopener noreferrer"
-										>
+										<a tabIndex="0" target="_blank" rel="noopener noreferrer">
 											{commit.message}
 										</a>
 									</Link>
 								</li>
 							))}
 						</ul>
-					</>
+					</div>
 				))}
 			</section>
 		</MainLayout>

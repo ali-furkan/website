@@ -19,4 +19,4 @@ Also duplicate the .env.example as .env and fill it.
 
 ## License
 
-This repository is [MIT licensed](./blob/master/LICENSE).
+This repository licensed under the [MIT license](LICENSE).

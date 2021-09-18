@@ -57,6 +57,7 @@ module.exports = {
         twitter: "https://twitter.com/AliFurkqn",
         discord: "https://discord.gg/7fRguueUV8",
     },
+    discordID: "304531766339829762",
     navbar: {
         links: [
             { text: "Home", href: "/" },

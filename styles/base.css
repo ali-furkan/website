@@ -34,7 +34,9 @@ svg {
 
 blockquote {
 	@apply rounded
-		bg-gray-100 dark:bg-gray-900;
+		bg-gray-100 dark:bg-gray-900
+		dark:border-gray-600
+		dark:text-gray-450 !important;
 }
 
 code[class*="language-"],

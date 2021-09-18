@@ -28,7 +28,7 @@ function Footer() {
 		const calcDuration = () => {
 			const durationContent = humanizeDuration(activity.start - Date.now(), {
 				round: true,
-				largest: 1,
+				largest: 1
 			})
 
 			setDuration(durationContent)

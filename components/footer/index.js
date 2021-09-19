@@ -25,6 +25,11 @@ function Footer() {
 	})
 
 	React.useEffect(() => {
+		if (!activity.start) {
+			setDuration("now")
+			return
+		}
+
 		const calcDuration = () => {
 			const durationContent = humanizeDuration(activity.start - Date.now(), {
 				round: true,
@@ -49,10 +54,10 @@ function Footer() {
 
 		const loadActivity = () => {
 			if (loading)
-				return setActivity({ type: "", name: "Loading...", start: Date.now() })
+				return setActivity({ type: "", name: "Status Loading", start: null })
 
 			if (status.discord_status == "offline")
-				return setActivity({ type: "Offline", name: "", start: Date.now() })
+				return setActivity({ type: "Offline", name: "", start: null })
 
 			if (status.activities.length > 0) {
 				const type = getActivityType()
@@ -67,7 +72,7 @@ function Footer() {
 			setActivity({
 				type: "No Activity",
 				name: "",
-				start: Date.now()
+				start: null
 			})
 		}
 

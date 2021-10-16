@@ -2,6 +2,7 @@ import React from "react"
 import Link from "next/link"
 import humanizeDuration from "humanize-duration"
 import { useLanyard } from "react-use-lanyard"
+import { getActivity } from "@/lib/activity"
 import webConfig from "@/web.config"
 import {
 	StyledFooterWrapper,
@@ -13,16 +14,15 @@ import {
 
 function Footer() {
 	const [duration, setDuration] = React.useState("now")
-	const [activity, setActivity] = React.useState({
-		type: "",
-		name: "",
-		start: Date.now()
-	})
-
 	const { loading, status } = useLanyard({
 		userId: webConfig.discordID,
 		socket: true
 	})
+
+	const activity = React.useMemo(
+		() => getActivity(loading, status),
+		[loading, status]
+	)
 
 	React.useEffect(() => {
 		if (!activity.start) {
@@ -36,48 +36,14 @@ function Footer() {
 				largest: 1
 			})
 
+			if (durationContent == duration) return
+
 			setDuration(durationContent)
 		}
 		const interval = setInterval(calcDuration, 1000 / 15)
 
 		return () => clearInterval(interval)
 	}, [activity])
-
-	React.useEffect(() => {
-		const getActivityType = () => {
-			if (["Visual Studio Code", "Vim"].includes(status.activities[0].name))
-				return "Coding"
-			if (status.listening_to_spotify) return "Listening"
-
-			return "Playing"
-		}
-
-		const loadActivity = () => {
-			if (loading)
-				return setActivity({ type: "", name: "Status Loading", start: null })
-
-			if (status.discord_status == "offline")
-				return setActivity({ type: "Offline", name: "", start: null })
-
-			if (status.activities.length > 0) {
-				const type = getActivityType()
-
-				return setActivity({
-					type,
-					name: status.activities[0].name,
-					start: status.activities[0].timestamps.start
-				})
-			}
-
-			setActivity({
-				type: "No Activity",
-				name: "",
-				start: null
-			})
-		}
-
-		loadActivity()
-	}, [loading, status])
 
 	return (
 		<StyledFooterWrapper>

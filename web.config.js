@@ -49,7 +49,7 @@ module.exports = {
             "Ali Furkan, personal website to showcase my career and development skills. I'm an 17 years old developer living in Istanbul and I'm trying to improve myself, learn and share what i learn. I love to develop stuffs with coding in summary",
         author: "Ali Furkan",
         image: "/assets/banner.png",
-        color: "#4F2BDF",
+        color: "#000000",
     },
     publishdomain: "alifurkan.co",
     sociallinks: {

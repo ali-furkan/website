@@ -61,7 +61,7 @@ module.exports = {
     navbar: {
         links: [
             { text: "Home", href: "/" },
-            { text: "Blog", href: "/posts" },
+            { text: "Bookmarks", href: "/bookmarks" },
             { text: "About", href: "/about" }
         ]
     },

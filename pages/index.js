@@ -21,14 +21,16 @@ const GhIco = dynamic(() => import("react-ionicons/lib/LogoGithub"), {
 })
 
 export async function getStaticProps() {
-    const bookmarks = (await getBookmarks(0, 3)).map((b) => ({
-        ...b,
-        hostname: new URL(b.url).hostname,
-        duration: humanizeDuration(Date.now() - b.createdAt, {
-            round: true,
-            largest: 1
-        })
-    }))
+    const bookmarks = (await getBookmarks(0, 3))
+        .filter((b) => b.is_public)
+        .map((b) => ({
+            ...b,
+            hostname: new URL(b.url).hostname,
+            duration: humanizeDuration(Date.now() - b.time * 1000, {
+                round: true,
+                largest: 1
+            })
+        }))
 
     return {
         props: {
@@ -42,6 +44,31 @@ function Home({ bookmarks }) {
     const { resolvedTheme } = useTheme()
 
     const color = resolvedTheme === "dark" ? "#ddd" : "#444"
+
+    function formatWorks() {
+        return pages.home.works.map((work, i) => (
+            <Card key={i} image={work.image} href={work.href}>
+                <h2>{work.title}</h2>
+                <p>{work.description}</p>
+            </Card>
+        ))
+    }
+
+    function formatBookmarks() {
+        return bookmarks.map((bookmark, i) => (
+            <Card
+                key={i}
+                href={bookmark.url}
+                footer={
+                    <p>
+                        {bookmark.hostname} - {bookmark.duration} ago{" "}
+                    </p>
+                }
+            >
+                <h2>{bookmark.title} </h2>
+            </Card>
+        ))
+    }
 
     return (
         <MainLayout>
@@ -76,30 +103,11 @@ function Home({ bookmarks }) {
             </section>
             <section>
                 <h2>Works</h2>
-                {pages.home.works.map((work, i) => (
-                    <Card key={i} image={work.image} href={work.href}>
-                        <h2>{work.title}</h2>
-                        <p>{work.description}</p>
-                    </Card>
-                ))}
+                {formatWorks()}
             </section>
             <section>
                 <h2>Bookmarks</h2>
-                {bookmarks?.length > 0 &&
-                    bookmarks.map((bookmark, i) => (
-                        <Card
-                            key={i}
-                            href={bookmark.url}
-                            footer={
-                                <p>
-                                    {bookmark.hostname} - {bookmark.duration}{" "}
-                                    ago{" "}
-                                </p>
-                            }
-                        >
-                            <h2>{bookmark.title} </h2>
-                        </Card>
-                    ))}
+                {bookmarks?.length > 0 && formatBookmarks()}
             </section>
         </MainLayout>
     )

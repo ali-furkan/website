@@ -4,10 +4,10 @@ import MainLayout from "@/layouts/main"
 import Card from "@/components/card"
 
 export async function getStaticProps() {
-    const bookmarks = (await getBookmarks()).map((b) => ({
+    const bookmarks = (await getBookmarks()).filter(b=>b.is_public).map((b) => ({
         ...b,
         hostname: new URL(b.url).hostname,
-        duration: humanizeDuration(Date.now() - b.createdAt, {
+        duration: humanizeDuration(Date.now() - b.time*1000, {
             round: true,
             largest: 1
         })

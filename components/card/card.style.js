@@ -22,7 +22,7 @@ export const StyledCard = styled.article((props) => [
     bg-opacity-0
     transition-all duration-200 ease-in-out 
     hover:light:bg-opacity-5
-    hover:dark:opacity-80
+    hover:dark:opacity-70
     `,
     props.border && tw`border-2 border-gray-700`
 ])

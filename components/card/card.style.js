@@ -1,7 +1,7 @@
 import tw, { styled } from "twin.macro"
 
 export const StyledCard = styled.article((props) => [
-	`
+    `
         a,
         h1,
         h2,
@@ -14,7 +14,7 @@ export const StyledCard = styled.article((props) => [
             margin-bottom: 0 !important;
         }
     `,
-	tw`
+    tw`
     p-6
     cursor-pointer
     rounded-lg
@@ -24,7 +24,7 @@ export const StyledCard = styled.article((props) => [
     hover:light:bg-opacity-5
     hover:dark:opacity-80
     `,
-	props.border && tw`border-2 border-gray-700`
+    props.border && tw`border-2 border-gray-700`
 ])
 
 export const StyledCardContainer = tw.div`

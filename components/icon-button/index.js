@@ -11,26 +11,26 @@ import { StyledIconButton, StyledIconButtonA } from "./icon-button.style"
  * }} props
  */
 function IconButton({ href, Icon, size, onClick, ...props }) {
-	if (onClick)
-		return (
-			<StyledIconButton onClick={onClick}>
-				<Icon fontSize={size} {...props} />
-			</StyledIconButton>
-		)
+    if (onClick)
+        return (
+            <StyledIconButton onClick={onClick}>
+                <Icon fontSize={size} {...props} />
+            </StyledIconButton>
+        )
 
-	if (href)
-		return (
-			<Link href={href} passHref>
-				<StyledIconButtonA
-					title={href}
-					tabIndex="0"
-					target="_blank"
-					rel="nooppener noreferrer"
-				>
-					<Icon fontSize={size} {...props} />
-				</StyledIconButtonA>
-			</Link>
-		)
+    if (href)
+        return (
+            <Link href={href} passHref>
+                <StyledIconButtonA
+                    title={href}
+                    tabIndex="0"
+                    target="_blank"
+                    rel="nooppener noreferrer"
+                >
+                    <Icon fontSize={size} {...props} />
+                </StyledIconButtonA>
+            </Link>
+        )
 }
 
 export default IconButton

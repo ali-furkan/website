@@ -6,50 +6,50 @@ import { getPost, getPostSlugs } from "@/lib/posts"
 import PostLayout from "@/layouts/post"
 
 export async function getStaticPaths() {
-	const { data, error } = await getPostSlugs()
+    const { data, error } = await getPostSlugs()
 
-	if (error)
-		return {
-			paths: [],
-			fallback: true
-		}
+    if (error)
+        return {
+            paths: [],
+            fallback: true
+        }
 
-	const paths = data.map(({ slug }) => ({ params: { slug } }))
+    const paths = data.map(({ slug }) => ({ params: { slug } }))
 
-	return {
-		paths,
-		fallback: false
-	}
+    return {
+        paths,
+        fallback: false
+    }
 }
 
 export async function getStaticProps(ctx) {
-	const { slug } = ctx.params
+    const { slug } = ctx.params
 
-	const { data, error } = await getPost(slug)
+    const { data, error } = await getPost(slug)
 
-	if (error)
-		return {
-			notFound: true,
-			revalidate: 10 * 60
-		}
+    if (error)
+        return {
+            notFound: true,
+            revalidate: 10 * 60
+        }
 
-	const mdxSource = await serialize(data.content, mdxSerializeOpts)
+    const mdxSource = await serialize(data.content, mdxSerializeOpts)
 
-	return {
-		props: {
-			meta: parseMdxMeta(data),
-			source: mdxSource
-		},
-		revalidate: 5 * 60
-	}
+    return {
+        props: {
+            meta: parseMdxMeta(data),
+            source: mdxSource
+        },
+        revalidate: 5 * 60
+    }
 }
 
 function PostPage({ meta, source }) {
-	return (
-		<PostLayout {...meta}>
-			<MDXRemote {...source} />
-		</PostLayout>
-	)
+    return (
+        <PostLayout {...meta}>
+            <MDXRemote {...source} />
+        </PostLayout>
+    )
 }
 
 export default PostPage

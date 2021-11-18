@@ -11,7 +11,7 @@ export const StyledPostArticle = tw.article`
 `
 
 export const StyledPostMeta = styled.div(() => [
-	`
+    `
         &>div {
             display: flex;
         }
@@ -31,16 +31,16 @@ export const StyledPostMeta = styled.div(() => [
             margin-right: 0;
         }
     `,
-	tw`flex justify-between my-4 text-sm sm:text-base flex-col-reverse sm:flex-row`
+    tw`flex justify-between my-4 text-sm sm:text-base flex-col-reverse sm:flex-row`
 ])
 
 export const StyledPostMetaItem = styled.div(() => [
-	`
+    `
         &>*:first-of-type {
             margin-right: 0.5rem
         }
     `,
-	tw`flex`
+    tw`flex`
 ])
 
 export const StyledPostImage = tw.img`

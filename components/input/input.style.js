@@ -5,11 +5,11 @@ export const StyledInputBox = tw.div`
 `
 
 export const StyledInputLabel = styled.label`
-	${tw`py-2`}
+    ${tw`py-2`}
 
-	p {
-		${tw`text-base font-semibold mb-0`}
-	}
+    p {
+        ${tw`text-base font-semibold mb-0`}
+    }
 `
 
 export const StyledInputWrapper = tw.div`

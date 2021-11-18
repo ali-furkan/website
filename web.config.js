@@ -15,11 +15,11 @@ module.exports = {
                 },
                 {
                     image:
-                        "https://raw.githubusercontent.com/picass-co/Website/dev/public/assets/banners/default.png",
-                    href: "https://github.com/ali-furkan/picass-co",
-                    title: "Picassco",
+                        "https://raw.githubusercontent.com/auth-blur/Website/dev/public/assets/banners/default.png",
+                    href: "https://github.com/auth-blur",
+                    title: "Blur",
                     description:
-                        "Picassco is a web service that provide to you control to your information on social networks in one place. Written in Typescript, Golang and C++"
+                        "Blur (aka picassco) is a web service that provide to you control to your information on social networks in one place. Written in Typescript, Golang and C++"
                 },
                 {
                     image: "/assets/projects/zink.png",

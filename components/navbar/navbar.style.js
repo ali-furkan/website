@@ -4,8 +4,8 @@ export const StyledHeader = tw.header`
     backdrop-filter[blur(8px)]
     bg-white
     dark:bg-black
-    dark:bg-opacity-20
-    bg-opacity-20
+    dark:bg-opacity-40
+    bg-opacity-30
     w-full
     sticky
     top-0

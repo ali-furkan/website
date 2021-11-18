@@ -18,10 +18,10 @@ export async function getStaticProps() {
 
     const dateCommits = dateBasedCommits(commits)
     const t = Date.now()
-    const weeklyCommits = commits.filter(
+    const monthlyCommits = commits.filter(
         (c) =>
             t - new Date(c.commit.committer.date).getTime() <
-            7 * 24 * 3600 * 1000
+            30 * 24 * 3600 * 1000
     ).length
 
     return {
@@ -32,14 +32,14 @@ export async function getStaticProps() {
                 { round: true, largest: 1 }
             ),
             totalCommits: commits.length,
-            weeklyCommits,
+            monthlyCommits,
             commits: dateCommits
         },
         revalidate: 10 * 60
     }
 }
 
-function Changelog({ lastCommit, totalCommits, weeklyCommits, commits }) {
+function Changelog({ lastCommit, totalCommits, monthlyCommits, commits }) {
     return (
         <MainLayout>
             <h1>Changelog</h1>
@@ -62,8 +62,8 @@ function Changelog({ lastCommit, totalCommits, weeklyCommits, commits }) {
                 </Card>
                 <Card>
                     <div tw={"text-center"}>
-                        <h2>{weeklyCommits}</h2>
-                        <p>Weekly Commits</p>
+                        <h2>{monthlyCommits}</h2>
+                        <p>Monthly Commits</p>
                     </div>
                 </Card>
                 <Card>

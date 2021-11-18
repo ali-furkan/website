@@ -50,7 +50,7 @@ function Changelog({ lastCommit, totalCommits, monthlyCommits, commits }) {
                 <Link href={"/github/website"}>
                     <a tabIndex="0">here</a>
                 </Link>
-                if you want to learn more information about this website
+                {" "}if you want to learn more information about this website
             </p>
 
             <div tw={"flex justify-between sm:flex-row flex-col"}>

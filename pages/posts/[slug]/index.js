@@ -14,7 +14,7 @@ export async function getStaticPaths() {
             fallback: true
         }
 
-    const paths = data.map(({ slug }) => ({ params: { slug } }))
+    const paths = data.map((slug) => ({ params: { slug } }))
 
     return {
         paths,

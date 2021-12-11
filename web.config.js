@@ -1,9 +1,11 @@
-const olds = new Date().getFullYear() - 2003
+const currentYear = new Date().getFullYear()
+const age = currentYear - 2003
+const duration = currentYear - 2016
 
 module.exports = {
     pages: {
         home: {
-            shortAbout: `Ali Furkan, personal website to showcase my career and development skills. I'm an ${olds} years old developer living in Istanbul and I'm trying to improve myself, learn and share what i learn. I love to develop stuffs with coding in summary`,
+            shortAbout: `Ali Furkan, personal website to showcase my career and development skills. I'm an ${age} years old developer living in Istanbul and I'm trying to improve myself, learn and share what i learn. I love to develop stuffs with coding in summary`,
             works: [
                 {
                     image:
@@ -30,11 +32,11 @@ module.exports = {
             ]
         },
         about: {
-            content: `I'm Ali Furkan and I'm an ${olds} years old
+            content: `I'm Ali Furkan and I'm an ${age} years old
             developer living in Istanbul and I'm trying to improve myself, learn
             and share what i learn. I love everything about coding in summary.
             Also I'm developer who care UI design with Modern Javascript. I have
-            been coding stuff for ${new Date().getFullYear() - 2016} years. I'm
+            been coding stuff for ${duration} years. I'm
             currently interested js, ts, golang, c++. I love for Modern Javascript
             including React, React Native, Mobx, Graphql and Node. Apart from
             Coding, I like playing games, drawing pictures and learning something

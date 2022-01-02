@@ -1,8 +1,7 @@
 import React from "react"
 import Link from "next/link"
-import humanizeDuration from "humanize-duration"
 import { useLanyard } from "react-use-lanyard"
-import { getActivity } from "@/lib/activity"
+import { getActivity, calcDuration } from "@/lib/activity"
 import webConfig from "@/web.config"
 import {
     StyledFooterWrapper,
@@ -13,7 +12,7 @@ import {
 } from "./footer.style"
 
 function Footer() {
-    const [duration, setDuration] = React.useState("now")
+    const [duration, setDuration] = React.useState("loading")
     const { loading, status } = useLanyard({
         userId: webConfig.discordID,
         socket: true
@@ -25,25 +24,10 @@ function Footer() {
     )
 
     React.useEffect(() => {
-        if (!activity.start) {
-            setDuration("now")
-            return
-        }
-
-        const calcDuration = () => {
-            const durationContent = humanizeDuration(
-                activity.start - Date.now(),
-                {
-                    round: true,
-                    largest: 1
-                }
-            )
-
-            if (durationContent == duration) return
-
-            setDuration(durationContent)
-        }
-        const interval = setInterval(calcDuration, 1000 / 15)
+        const interval = setInterval(
+            () => setDuration(calcDuration(activity.start)),
+            1000 / 15
+        )
 
         return () => clearInterval(interval)
     }, [activity])

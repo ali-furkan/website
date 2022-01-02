@@ -25,7 +25,7 @@ function Footer() {
 
     React.useEffect(() => {
         const interval = setInterval(
-            () => setDuration(calcDuration(activity.start)),
+            () => setDuration(calcDuration(activity)),
             1000 / 15
         )
 

@@ -25,7 +25,7 @@ module.exports = {
                 },
                 {
                     image: "/assets/projects/zink.png",
-                    href: "https://github.com/zinkapp",
+                    href: "https://github.com/ali-furkan/zink",
                     title: "Zinkapp",
                     description: "Online Duel mobile game written in Nest.js and React Native"
                 }
@@ -53,7 +53,7 @@ module.exports = {
         image: "/assets/banner.png",
         color: "#000000",
     },
-    publishdomain: "alifurkan.co",
+    publishdomain: "alifurkan.dev",
     sociallinks: {
         github: "https://github.com/ali-furkan",
         twitter: "https://twitter.com/AliFurkqn",
@@ -78,7 +78,7 @@ module.exports = {
                 { text: "Twitter", href: "/twitter" },
                 { text: "Github", href: "/github" },
                 { text: "Discord", href: "/discord" },
-                { text: "Email", href:"mailto:me@alifurkan.co" }
+                { text: "Email", href:"mailto:me@alifurkan.dev" }
             ],
             [
                 { text: "Bookmarks", href: "/bookmarks" },

@@ -5,8 +5,8 @@
   "description": "Personal Website",
   "author": {
     "name": "Ali Furkan",
-    "email": "me@alifurkan.co",
-    "url": "https://alifurkan.co"
+    "email": "me@alifurkan.dev",
+    "url": "https://alifurkan.dev"
   },
   "main": "index.js",
   "scripts": {

@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://alifurkan.co
+Host: https://alifurkan.dev
 
 # Sitemaps
-Sitemap: https://alifurkan.co/sitemap.xml
+Sitemap: https://alifurkan.dev/sitemap.xml

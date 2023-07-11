@@ -1,6 +1,6 @@
 const now = new Date()
 const bd = new Date("2003-07-26")
-const age = Math.floor(now -bd) / 31536000000
+const age = Math.floor((now -bd) / 31536000000)
 const duration = now.getFullYear() - 2016
 
 module.exports = {

@@ -48,4 +48,3 @@ function Bookmarks({ bookmarks }) {
 }
 
 export default Bookmarks
-de

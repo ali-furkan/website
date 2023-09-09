@@ -6,7 +6,7 @@ const duration = now.getFullYear() - 2016
 module.exports = {
     pages: {
         home: {
-            shortAbout: `Ali Furkan, personal website to showcase my career and development skills. I'm an ${age} years old developer living in Istanbul and I'm trying to improve myself, learn and share what i learn. I love to develop stuffs with coding in summary`,
+            shortAbout: `I am a ${age} years old Software Developer from Istanbul. I have been coding for ${duration} years and enjoy working with languages like Typescript, Golang, and Rust. and this website showcases a summary whole my career accomplishments and development skills.`,
             works: [
                 {
                     image:
@@ -14,7 +14,7 @@ module.exports = {
                     href: "https://github.com/ali-furkan/stona",
                     title: "Stona",
                     description:
-                        "Stona is a dynamic scalable object storage. Truly elastic artchitecture for effortless growth"
+                        "Stona is a dynamic scalable object storage. Truly elastic architecture for effortless growth"
                 },
                 {
                     image:
@@ -22,7 +22,7 @@ module.exports = {
                     href: "https://github.com/auth-blur",
                     title: "Blur",
                     description:
-                        "Blur (aka picassco) is a web service that provide to you control to your information on social networks in one place. Written in Typescript, Golang and C++"
+                        "Blur (aka. Picassco) is a web service that provides you control over your information on social networks in one place. Written in Typescript, Golang, and C++"
                 },
                 {
                     image: "/assets/projects/zink.png",
@@ -33,15 +33,11 @@ module.exports = {
             ]
         },
         about: {
-            content: `I'm Ali Furkan and I'm an ${age} years old
-            developer living in Istanbul and I'm trying to improve myself, learn
-            and share what i learn. I love everything about coding in summary.
-            Also I'm developer who care UI design with Modern Javascript. I have
-            been coding stuff for ${duration} years. I'm
-            currently interested js, ts, golang, c++. I love for Modern Javascript
-            including React, React Native, Mobx, Graphql and Node. Apart from
-            Coding, I like playing games, drawing pictures and learning something
-            new.`
+            content: `My name is Ali Furkan. I am a Software Developer currently residing in
+            Istanbul, at the age of ${age}. I am constantly trying to improve myself in the fields that
+            interest me, such as Computer Networking and Graphics. I have been coding 
+            for ${duration} years, and have currently worked with languages such as Typescript, 
+            Golang, and Rust. Besides coding, I enjoy playing chess as an enthusiast.`
         },
 
     },
@@ -49,7 +45,7 @@ module.exports = {
         title: "Ali Furkan's Portfolio",
         keywords: "Ali Furkan, Portfolio, Github, React, Nest, Typescript",
         description:
-            "Ali Furkan, personal website to showcase my career and development skills. I'm an 17 years old developer living in Istanbul and I'm trying to improve myself, learn and share what i learn. I love to develop stuffs with coding in summary",
+            `My name is Ali Furkan. I am a ${age} years old Software Developer from Istanbul. I have been coding for ${duration} years and enjoy working with languages like Typescript, Golang, and Rust. and this website showcases a summary whole my career accomplishments and development skills.`,
         author: "Ali Furkan",
         image: "/assets/banner.png",
         color: "#000000",

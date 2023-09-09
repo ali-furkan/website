@@ -27,7 +27,7 @@ function Bookmarks({ bookmarks }) {
     return (
         <MainLayout>
             <h1>Bookmarks</h1>
-            <p>Bookmarks that I have marked, liked and others may like</p>
+            <p>I plunge in several articles or websites during the day and, I need to find them again sometimes. That's why I list here articles and webpages that seem interesting to me.</p>
 
             {bookmarks?.length > 0 &&
                 bookmarks.map((bookmark, i) => (
@@ -48,3 +48,4 @@ function Bookmarks({ bookmarks }) {
 }
 
 export default Bookmarks
+de

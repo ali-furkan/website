@@ -2,7 +2,7 @@
 
 # Ali Furkan's Personal Website
 
-This repository is source code of My Website that contains my services. You can use it as a template for your new project when make sure to edit the required parts. If you want to get more information or help me by contributing, you can continue reading this text.
+This repository is source code of My Website that contains my services. You can use it as a template for your new project when make sure to edit the required parts. If you want to get more information or help me by contributing, you do not hesitate to create issue or pr.
 
 ## Requirements & Installation
 First of all you check your machine have [node.js](https://nodejs.org).

@@ -53,7 +53,7 @@ module.exports = {
     publishdomain: "alifurkan.dev",
     sociallinks: {
         github: "https://github.com/ali-furkan",
-        twitter: "https://twitter.com/AliFurkqn",
+        twitter: "https://twitter.com/a2f4n",
         discord: "https://discord.gg/7fRguueUV8",
     },
     discordID: "304531766339829762",

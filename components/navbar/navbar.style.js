@@ -13,7 +13,7 @@ export const StyledHeader = tw.header`
 `
 
 export const StyledNavbar = tw.nav`
-    max-w-5xl
+    max-w-3xl
     mx-auto
     flex justify-between items-center
     py-5 px-6

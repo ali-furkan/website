@@ -12,7 +12,7 @@ export async function getStaticProps() {
     if (error)
         return {
             props: {},
-            revalidate: 5 * 60,
+            revalidate: 3600,
             notFound: true
         }
 
@@ -35,7 +35,7 @@ export async function getStaticProps() {
             monthlyCommits,
             commits: dateCommits
         },
-        revalidate: 10 * 60
+        revalidate: 3600
     }
 }
 

@@ -59,22 +59,6 @@ const MyApp = ({ Component, pageProps }) => {
                     property="twitter:card"
                     content={`https://${webConfig.publishdomain}${webConfig.meta.image}`}
                 />
-
-                {/* Google Analytics */}
-                <script
-                    async
-                    src="https://www.googletagmanager.com/gtag/js?id=UA-134822812-3"
-                ></script>
-                <script
-                    dangerouslySetInnerHTML={{
-                        __html: `window.dataLayer = window.dataLayer || [];
-                            function gtag(){dataLayer.push(arguments);}
-                            gtag('js', new Date());
-
-                            gtag('config', 'UA-134822812-3');
-                            `
-                    }}
-                />
             </Head>
             <ThemeProvider attribute="class">
                 <Component {...pageProps} />
